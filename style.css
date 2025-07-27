@@ -1,0 +1,712 @@
+/*Universal Box-Sizing Reset */
+*, *::before, *::after {
+    box-sizing: border-box;/*1*/
+}
+/*This universal rule makes elements' width and height
+properties include padding and border, making layout calculations much more
+intuitive and predictable across all elements.
+/*Base Body Styles*/
+body {
+    font-family:'Tahoma', Verdana, sans-serif; /*Sets the default font for the entire page,
+    falls to next one if default if not available)*/
+    margin: 0; /*Removes the default outer spacing (margin) that browsers apply to the body element.*/
+    padding: 0; /*removes default inner padding*/
+    line-height: 1.3; /*gives space between text*/
+    color: #1b0404;
+    background-color: #ffffff;
+}
+/* Crucial for fixed landing page: Hide overflow initially */
+html, body {
+    margin:0;
+    padding:0;
+    overflow-x: hidden;
+    /* >>> FIX START <<< */
+    /* This line was commented out or set to hidden, preventing scroll. */
+    /* It needs to be 'hidden' initially for the landing page, then switched to 'auto' by JS. */
+    overflow-y: hidden; /* This IS crucial for the landing page to prevent initial scroll */
+    /* >>> FIX END <<< */
+    height: 100%;/*Ensures the html and body elements take up the full height of the viewport,
+    which is necessary for vh (viewport height) units to work correctly for full-screen sections.*/
+}
+/* Optional: Smooth scrolling for when scrolling is re-enabled */
+html {
+    scroll-behavior:smooth;/*Enables smooth scrolling when a user clicks on an anchor link */
+}
+/* General Container for Centering Content */
+.container {
+    max-width: 1200px; /*Limits the maximum width of content within elements
+    that use the .container class, preventing content from stretching too wide on large screens.*/
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Global Button Styling (used for View My Art, Send Message) */
+.button {
+    display:inline-block; /*Makes the button behave like an inline element (can sit next to others)
+    but allows block-level properties like width, height, padding, and margin.*/
+    background-color: #8420ff;
+    color: rgb(255, 255, 255);
+    padding: 12px 20px; /*top/bottom padding and left/right padding*/
+    border-radius: 20px; /*rounds corner of button*/
+
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /*transition: background-color 0.3s ease, transform 0.2s ease;: Defines smooth
+    animation effects for changes in background-color (0.3 seconds) and transform (0.2 seconds) on hover.*/
+    }
+
+.button:hover {
+    background-color: #550780; /*adds a colour when cursor is taken to the button*/
+    transform: translateY(-2px); /*gives a bouncy feature when hovered over button*/
+    }
+
+/*---Header Styles ---*/
+header {
+    background-color: #333; /*sets a dark grey background for header*/
+    color: white;/* changes colour of text in Header*/
+    padding: 1rem;/*Adds vertical padding
+    (1rem = typically 16px) to the header, no horizontal padding as the .container handles that.*/
+    position:sticky; /*header will stay at the top after scrolling*/
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    top: 0; /* Add top: 0 for sticky positioning to work */
+    z-index: 1000;
+    /*Ensures the header stays on top of other content if elements overlap.
+    A higher z-index means it's "closer" to the user.*/
+    box-shadow: 0 8px 10px rgba(0,0,0,0.2); /*adds shadow to header*/
+}
+
+header .container {
+    display: flex;
+    /*Turns the .container inside the header into a flex container
+    allowing its direct children (h1 and nav) to be laid out using flexbox*/
+    justify-content: space-between; /*Distributes space evenly between the h1 and nav items, pushing them to opposite ends of the header*/
+    align-items:center; /*Vertically centers the h1 and nav items within the header.*/
+    /*h1 is the title and nav are the buttons*/
+}
+
+header h1 {
+    margin:0;/*removes default margin from header*/
+    font-size: 1.8em;
+}
+
+header h1 a {
+    color:white;
+    text-decoration: none;
+}
+
+header h1 a:hover {
+    color: #f0f0f0;
+}
+
+header nav ul {
+    list-style: none; /*removes list bullets(or whatver list type is there)*/
+    margin: 0;
+    padding: 0;
+    display: flex; /*Makes the list items <li> display in a row using flexbox*/
+    gap:20px;
+}
+
+header nav ul li {
+    margin-left: 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+
+    /* Base styles for the button-like effect.
+       Start with no background/border-radius/padding if you want them to *appear* on hover.
+       If you want them to always have this shape, but change color/background,
+       set the padding/border-radius to the same value as hover.
+       LET'S ASSUME you want them to *grow* into the button shape on hover:
+    */
+    padding: 0px 0px; /* Start with no padding */
+    background-color: transparent; /* Start with no background */
+    border-radius: 0px; /* Start with no border-radius */
+
+    /* IMPORTANT: Include ALL properties that change on hover in the transition */
+    transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease, padding 0.3s ease;
+
+    /* REMOVE THIS LINE: You are already handling spacing with 'gap' on 'ul' or 'margin-left' on 'li' */
+    /* margin-left: 15px; */
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: #000000; /* Text color changes to black */
+    background-color: white; /* Background becomes white */
+    border-radius: 20px; /* Corners become rounded */
+    padding: 8px 22px; /* Padding expands */
+}
+
+/* This rule was a duplicate, combining it with the one above is cleaner. */
+/* header nav ul li a:hover,
+header nav ul li a.active
+{
+    color: #000000;
+    background-color: white;
+    border-radius: 20px;
+    padding: 8px 22px;
+    font-weight: bolder;
+} */
+
+/* --- Hero Section Styles (Full-Screen Landing Page) --- */
+.hero-section {
+    /* Your existing background settings for the whole hero section */
+    background-color: rgb(255, 255, 255); /* Or any other background color for the hero section */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-shadow:0 2px 3px #3c3c3c49;
+    color: rgb(11, 3, 3); /* Sets default text color for content within hero-section */
+    text-align: center; /* Centers inline-level text directly within hero-section, but Flexbox will govern main children */
+
+    /* Full viewport height for the entire hero section */
+    min-height: 100vh; /* Ensures the hero section takes up at least the full viewport height */
+    width: 100%; /* Ensures it takes full width */
+    position: relative; /* Essential for positioning the ::before overlay and other children */
+    overflow: hidden; /* Helps prevent unwanted scrollbars within the hero section itself */
+
+    /* *** FLEXBOX FOR THE MAIN LAYOUT ( arranging .top-visual-area and .container ) *** */
+    display: flex; /* Makes .hero-section a flex container */
+    flex-direction: column; /* Stacks its direct children (.top-visual-area and .container) vertically */
+    justify-content: flex-start; /* IMPORTANT: Aligns content to the top. We'll control distribution with flex-grow on children. */
+    align-items: center; /* Horizontally centers its direct children (the visual area and the text container) */
+
+    padding: 0;
+    /* >>> FIX START <<< */
+    /* This transition is likely for the hero section itself to fade out. */
+    /* Ensure it's not conflicting with visibility/positioning if you're making it disappear. */
+    /* If the hero section is meant to "go away" (e.g., using display: none or position: absolute + top/left/etc) */
+    /* you'll need JavaScript to control that. For now, it's just about showing the main content. */
+    transition: opacity 0.8s ease-out;
+    /* >>> FIX END <<< */
+
+
+    /* Remove these properties from here if you have them, they might conflict */
+    /* opacity: 1; */
+    /* top: 0; */
+    /* left: 0; */
+    /* z-index: 999; */
+    /* position: absolute; */ /* hero-section should ideally be static or relative, not absolute for overall layout */
+}
+
+.hero-section::before {
+    content: '';/*: Required for ::before and ::after pseudo-elements to display.*/
+    position: absolute;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    /*Makes the pseudo-element cover the entire area of its parent (.hero-section).*/
+
+    /*Creates a semi-transparent black overlay (40% opacity)
+    for readability of text on the background image.*/
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+    z-index: 1;
+    /*Places the overlay above the background image but below the hero section's content.*/
+}
+.hero-section .top-visual-area {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Placed below text content */
+    overflow: hidden;
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out; /* Downward shadow, slightly blurred, semi-transparent black */
+}
+
+/* Styles for the actual image/video element within .top-visual-area */
+.hero-section .top-visual-area img,
+.hero-section .top-visual-area video { /* Target both images and videos */
+    width: 100%; /* Make the image/video stretch to fill the .top-visual-area horizontally */
+    height: 100%; /* Make the image/video stretch to fill the .top-visual-area vertically */
+    object-fit: cover; /* IMPORTANT: This will make the image/video cover the entire area, cropping if necessary. Use 'contain' if you want to see the whole image without cropping, but it might leave black bars. */
+    display: block; /* Removes any extra space below images sometimes */
+}
+.hero-section .container {
+    position: relative;
+    /*Ensures the container's content (h2, p, buttons)
+    is positioned relative to the container itself, and z-index works correctly for it.*/
+    z-index: 2;/*Places the container's content above the ::before overlay.*/
+    width:100%;
+    max-width: 800px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*Makes the container a flex container.
+    Stacks content vertically.*/
+    padding: 35px;
+    padding-bottom: 50px;
+    justify-content: center;
+
+}
+/* Reduce gap between H2 and P tags */
+.hero-section .container h2 {
+    margin-bottom: 4px;
+}
+
+.hero-section .container p {
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+/*.hero-section .button
+{
+
+}*/
+.hero-section h2 {
+    font-size: 1.7em; /*increases size of teh text*/
+}
+.hero-section p {
+    font-size: 1.1em; /* 86 */
+}
+
+.hero-section .container .button {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.1em;
+}
+
+/* Media Query for Larger Screens (Desktop/Tablet Landscape) */
+@media screen and (min-width: 768px) {
+    #hero.hero-section {
+        flex-direction: row; /* CHANGED: Reverses the order - GIF on left, Text on right */
+        justify-content: space-between;
+        align-items: stretch;
+        text-align: right; /* CHANGED: Align text to the right for the hero section overall */
+        /*padding: 0 50px;*/
+    }
+
+    #hero .container {
+        flex: 1;
+        max-width: 50%;
+        padding: 0;
+        text-align: right; /* CHANGED: Align text to the right within its container */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 20px;
+        padding-left: 40px;
+        
+    }
+
+    #hero .top-visual-area {
+        
+        flex: 1;
+        height: auto;
+        display: flex;
+        justify-content: flex-end; /* CHANGED: Pushes the GIF to the left */
+        align-items: stretch;
+        overflow: hidden;
+    }
+
+    #hero .top-visual-area img,
+    #hero .top-visual-area video {
+        
+        height: auto;
+        object-fit:cover;
+        object-position: center; /* CHANGED: Positions the GIF content to the left */
+        filter: brightness(1);
+        align-items: stretch;
+    }
+
+    .scroll-down {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 942px)
+{
+    #hero .container .button
+    {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        
+    }
+}
+
+/* --- Scroll Down Indicator Styles (for Hero Section) --- */
+.scroll-down {
+    margin-top: 25px; /* Adjust as needed for spacing from the button */
+    position: relative; /* Keep if you need to position children absolutely within it */
+    z-index: 2; /* Ensure it's above the overlay */
+    /* If you had transform: translateY(-50%) or left: 50% here, you might need to adjust or remove them if they conflict */
+}
+
+.scroll-down a {
+    display: flex;
+    flex-direction: column; /* Stack children (the arrow) vertically */
+    align-items: center; /* Horizontally center the arrow */
+    text-decoration: none; /* Removes underline */
+    color: rgb(0, 0, 0); /* Ensures the arrow's "color" (if used for border) is white, though border property is more direct */
+    font-size: 1.1em; /* Can be removed if no text is present */
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Keep transitions for smooth effects */
+}
+
+.scroll-down a:hover {
+    opacity: 1;
+    transform: translateY(5px); /* Example: little bounce effect on hover */
+}
+
+/* --- Styles for the Arrow --- */
+.arrow-down {
+    /* REMOVE any existing width/height/border-left/border-right/border-top properties here */
+
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent; /* Adjust size of arrow base */
+    border-right: 30px solid transparent; /* Adjust size of arrow base */
+    
+    border-bottom: 10px solid rgb(56, 38, 79); /* *** This creates a downward-pointing white arrow *** */
+    /* Adjust '10px' values to make the arrow bigger or smaller */
+
+    margin-top: -60px; /* Space between the (now invisible) text area and the arrow */
+     /* Keep your bounce animation if you like it */
+
+    /* Ensure no conflicting transforms or positions from previous setups */
+    transform: none; /* Reset any previous transforms if they are here */
+}
+
+/* Remove or comment out .scroll-down span if you completely remove the span from HTML */
+/* If you keep any text in the span, just remove margin-bottom: 10px; */
+/*
+.scroll-down span {
+    // margin-bottom: 10px; // remove this if no text
+}
+*/
+
+/* --- Your bounce animation (ensure this is defined in your CSS) --- */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px); /* Bounces up */
+    }
+    60% {
+        transform: translateY(-5px); /* Recoil slightly */
+    }
+}
+
+.main-content-wrapper {
+    opacity:0;
+    /*Initially hides the main-content-wrapper by making it completely transparent.*/
+    transform: translateY(20px);
+    /*Initially shifts the main-content-wrapper down by 20px, preparing for a subtle slide-in effect.*/
+    /* >>> FIX START <<< */
+    /* The previous line was 'transform: opacity 0.8s ease-out, transform 0.8s ease-out;'.
+       This was overriding 'transform: translateY(20px);' and was syntactically incorrect for 'transform' as a property name within a transition.
+       Transition should be a separate property. */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    /* >>> FIX END <<< */
+    /*Animates the opacity and transform changes over 0.8 seconds.*/
+    pointer-events: none;
+    /*Prevents any mouse interactions (clicks, hovers) on the hidden wrapper.*/
+    visibility: hidden;
+    /*Hides the element from screen readers and the layout engine (more robust hiding than just opacity).*/
+    width: 100%; /*wrapper takes full length*/
+
+}
+
+.main-content-wrapper.active {
+    opacity: 1; /*Makes the main-content-wrapper fully visible when the*/
+    /*active class is added by JavaScript.*/
+    transform: translateY(0); /*Moves the main-content-wrapper*/
+    /*back to its original vertical position, creating the slide-in effect.*/
+    pointer-events: auto; /*Re-enables mouse interactions when the active class is applied.*/
+    visibility: visible; /* Makes the wrapper visible to screen
+    readers and layout when active*/
+}
+
+
+/*---section heading general styles (for consistency) ---*/
+.about-section h2,
+.gallery-section h2,
+.contact-section h2 {
+    padding-top: 0%;
+    margin-bottom: 60px; /*gives padding after section headings*/
+    position: relative;
+    /*Establishes a positioning context for the ::after pseudo-element used for the underline.*/
+    padding-bottom: 10px;
+    /*Adds space below the heading text but above the ::after underline.*/
+    font-size: 2.5em;
+    font-family:'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
+    color: #212121;
+    text-shadow: 0 2px 3px #cbcbcb;
+}
+/*adding underlines after the headings*/
+.about-section h2::after,
+.gallery-section h2::after,
+.contact-section h2::after {
+    content: '';/*Required for the pseudo-element.*/
+    position: absolute;
+    left: 50%;
+    /*Moves the pseudo-element's left edge to the horizontal center of the h2.*/
+    transform: translateX(-50%);
+    bottom: 0;
+    width:100px;
+    height: 5px;
+    background-color: #9500ff;
+    border-radius: 3px;
+}
+/*---about section styles---*/
+.about-section {
+    padding: 80px;
+    background-image: url(images/18705226_v1016-a-10.jpg);
+    text-align: center;
+    box-shadow: 0 2px 20px #21212133;
+    margin-bottom: 40px;
+}
+
+.about-section p {
+    max-width: 800px;/*Limits the width of paragraphs for readability.*/
+    margin: 0 auto 15px auto;/* Centers paragraphs and adds 15px bottom margin*/
+    font-size: 1.2em;
+    line-height: 1.4;
+    font-family:'Tahoma';
+}
+
+/*---Gallery section styles---*/
+.gallery-section {
+    padding: 40px;
+    background-color: white;
+    text-align: center;
+}
+/*filter-buttons*/
+.filter-buttons {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;/*Allows filter buttons to wrap to the next line on smaller screens.*/
+    justify-content: center;
+    gap: 10px;
+}
+.filter-btn {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    /* CHANGE THIS LINE: Add 'transform 0.2s ease' to the transition */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background-color: #8420ff; /* 175 */
+    color: white; /* 176 */
+    box-shadow: 0 4px 8px rgba(106, 0, 255, 0.3); /* 177 */
+}
+/*gallery grid layout using CSS grid*/
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    column-gap: 30px; /* Keep your column gap */
+    row-gap: 0px; /* Adjust this as desired, perhaps start with 0px for tight packing */
+    padding-top: 20px;
+    align-items: start; /* Keep this, it helped with internal item stretching */
+
+    /* >>> NEW / MODIFIED LINE <<< */
+    /* Instead of grid-auto-rows: 1px;, let's try 'min-content' or a more robust auto-sizing. */
+    /* If 'masonry' was widely supported, it would be: grid-template-rows: masonry; */
+
+    /* For non-masonry browsers, grid-auto-rows: 1px is the best bet, but let's ensure items truly don't expand. */
+    /* We can also ensure items within grid don't stretch */
+    grid-auto-flow: row dense; /* Tells grid to fill rows completely and use space efficiently */
+    grid-auto-rows:1px; /* This is the key. Make auto-rows only as tall as their content. */
+}
+
+/*--individual gallery item style--*/
+.gallery-item {
+    background-color: #fff;
+    border-radius:8px;
+    overflow: hidden;/*Hides any content that spills outside the rounded corners,
+    especially useful for images.*/
+    box-shadow: 0 4px 15px  rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+
+}
+
+.gallery-item img { /* This should be .gallery-item img - fixing the colon to space */
+    width: 100%;
+    /*Makes images take full width of their card.*/
+    height: auto;
+    display: block; /*Scales and crops the image to fill the
+    given dimensions without distortion.*/
+    border-bottom: 1px solid#eee;
+}
+.gallery-item:hover {
+    transform: translateY(-8px);/*adds animation*/
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    /*shadow increases when hovering*/
+}
+.gallery-item h3 {
+    font-size: 1.3em; /* 194 */
+    margin: 15px 15px 5px 15px; /* 195 */
+    color: #333; /* 196 */
+}
+
+.gallery-item p {
+    font-size: 0.95em; /* 197 */
+    color: #666; /* 198 */
+    margin: 0 15px 15px 15px; /* 199 */
+    line-height: 1.5; /* 200 */
+}
+
+/*--Contact section syles--*/
+.contact-section {
+    padding:80px;
+    background-color: white;
+    text-align: center;
+    box-shadow:  0 0px 20px rgba(0, 0, 0, 0.293);
+    background-color: #ffffff;
+}
+.contact-section p {
+    max-width: 700px;
+    margin: 0 auto 30px auto; /* 206 */
+    font-size: 1.3em; /* 207 */
+    line-height: 1.4; /* 208 */
+}
+
+.contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #bcbcbc;
+    border-radius: 10px;
+    box-shadow: 8px; /* This looks like an incomplete or incorrect box-shadow value. It should be 4 values + color. */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.contact-section label {
+    font-weight: bold;
+    font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 5px;
+    display: block; /*Makes labels take up their own line.*/
+    color: #2b2b2b;
+}
+
+.contact-section input[type="text"],
+.contact-section input[type="email"],
+.contact-section textarea {
+    width: 100%;
+    padding: 12px;
+    border: 3px solid #606060;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-section input[type="text"]:focus,
+.contact-section input[type="email"]:focus,
+.contact-section textarea:focus {
+    border-color: #9500ff;
+    outline:none;
+    box-shadow:0 0 0 5px rgba(112, 0, 225, 0.25);
+}
+
+.contact-section textarea {
+    resize:vertical; /*looks the text area to be only resizable veritcally*/
+    min-height: 120px;
+}
+.contact-section button[type="submit"] {
+    background-color: #8420ff;
+    color: white;
+    padding:12px 25px;
+    border:none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Tahoma', Verdana, Geneva, Tahoma, sans-serif;
+    align-self: flex-start;
+    /*Aligns the submit button to the left within the flex column.*/
+    margin-top: 7px;/*adds space above button*/
+}
+
+.contact-section button[type="submit"]:hover {
+    background-color: #550780;
+    transform: translateY(-2px);/*animate when hovering*/
+}
+
+/*--footer style---*/
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px; /*top/bottom padding for footer*/
+    text-align: center;
+    font-size: 0.9em;
+
+}
+
+footer .container {
+    display: flex; /*makes footer container a flex container*/
+    flex-direction: column;/*Stacks footer content (copyright, social links)
+    vertically on small screens.*/
+    align-items: center;/*align flex container in center*/
+    gap: 5px;
+}
+
+footer .social-links a {
+    color: white;
+    text-decoration: none;/*removes under*/
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .social-links */
+    color: #9500ff;
+}
+
+/*responsive adjustments for footer*/
+@media(min-width:768px) /* Added 'px' to media query */
+{
+    footer .container
+    {
+       flex-direction: row;
+       justify-content: space-between;
+    }
+}
+/*same for hero section*/
+@media(max-width:768px) /* Added 'px' to media query */
+{
+    .hero-section h2
+    {
+       font-size: 2.5em;
+    }
+    .hero-section p
+    {
+       font-size: 1.1em;
+    }
+    .hero-section .button
+    {
+        padding : 10px 20px;
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .scroll-down
+    {
+        /* This bottom positioning might conflict if hero section changes its layout. */
+        /* Consider adjusting if you still see issues */
+        bottom:20px;
+    }
+}
