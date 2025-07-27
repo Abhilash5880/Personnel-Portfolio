@@ -27,6 +27,7 @@ https://abhilash5880.github.io/Artwork-Portfolio
 
 * **Gallery Grid Masonry Effect:** The JavaScript for calculating `grid-row-end` for the Masonry-like layout can sometimes result in `NaN` errors in the console, leading to inconsistent item sizing and spacing. This is an area for further refinement and debugging.
 * **Image Loading Errors:** Ensure all image paths are correct to avoid `404 (Not Found)` errors for gallery items and other assets.
+* **Fine Tuning for different screen size:** Used CSS media queries to change sizes and alignment to make the website look good on all screen sizes
 * **Accessibility:** Further enhancements can be made to improve accessibility (e.g., ARIA attributes, keyboard navigation).
 * **Performance Optimization:** Implementing more advanced image/videos, video player, smoother loading and considering minifying CSS/JS for production.
 
