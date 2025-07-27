@@ -710,3 +710,107 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         bottom:20px;
     }
 }
+
+@media screen and (max-width: 714px) {
+    /* Adjust padding/margins for overall sections */
+    #hero.hero-section,
+    .about-section,
+    .gallery-section,
+    .contact-section {
+        padding-left: 10px; /* Smaller horizontal padding */
+        padding-right: 10px; /* Smaller horizontal padding */
+        padding-top: 15px; /* Adjust top padding if needed */
+        padding-bottom: 15px; /* Adjust bottom padding if needed */
+    }
+   
+    /*Header adjustments for mobile (from previous discussions, but ensure padding is right)*/
+    header {
+        padding: 1rem 15px; /* Smaller horizontal padding for header */
+    }
+    header h1 {
+        font-size: 1.5em; /* Smaller title */
+    }
+    header nav a {
+        font-size: 0.9em; /* Smaller nav links */
+        padding: 5px 8px; /* Smaller nav link padding */
+    }
+
+    /* Hero section content adjustments for mobile */
+    .hero-section .container {
+        padding: 20px 15px 30px 15px; /* Reduced padding for mobile hero text/button area */
+        align-items: flex-end; /* Keep text/button aligned right as per previous request */
+        text-align: right;
+    }
+    .hero-section h2 
+    {
+        font-size: 2em; /* Smaller heading */
+    }
+    .hero-section p {
+        font-size: 0.9em; /* Smaller paragraph */
+    }
+    .hero-section .button {
+        font-size: 0.9em; /* Smaller button text */
+        padding: 8px 16px; /* Smaller button padding */
+        margin-bottom: 20px; /* Adjust margin if needed */
+    }
+    .scroll-down {
+        right: 15px; /* Adjust scroll-down position for mobile */
+        bottom: 15px;
+    }
+
+    /* --- Gallery Section Specific --- */
+    .gallery-section h2 {
+        font-size: 1.8em; /* Smaller gallery heading */
+        margin-bottom: 15px; /* Adjust margin */
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap; /* Allow filter buttons to wrap to next line */
+        justify-content: center; /* Center buttons if they wrap */
+        gap: 8px; /* Smaller gap between buttons */
+        margin-bottom: 20px; /* Adjust margin */
+    }
+    .filter-buttons button {
+        font-size: 0.8em; /* Smaller button text */
+        padding: 8px 12px; /* Smaller button padding */
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* FORCES 2 COLUMNS ON MOBILE */
+        column-gap: 15px; /* Reduced horizontal gap */
+        row-gap: 0px; /* Reduced vertical gap */
+        padding-top: 10px; /* Adjusted top padding for the grid */
+    }
+
+    .gallery-item {
+        /* Adjust padding or other properties for individual items if they overflow */
+         /* Example: You might need to add or adjust this */
+        display: block;
+    }
+    .gallery-item h3 {
+        font-size: 1em; /* Smaller item title */
+    }
+    .gallery-item p {
+        font-size: 0.8em; /* Smaller item description */
+    }
+
+    /* Contact section adjustments for mobile */
+    .contact-section h2 {
+        font-size: 1.8em; /* Smaller heading */
+        margin-bottom: 15px;
+    }
+    .contact-section form {
+        padding: 20px; /* Reduce form padding */
+    }
+    .contact-section input,
+    .contact-section textarea {
+        font-size: 0.9em; /* Smaller form text */
+        padding: 8px; /* Smaller form padding */
+    }
+    .contact-section button {
+        font-size: 0.9em; /* Smaller button text */
+        padding: 10px 20px; /* Smaller button padding */
+    }
+}
+
+
