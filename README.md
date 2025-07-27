@@ -23,22 +23,12 @@ https://abhilash5880.github.io/Artwork-Portfolio
 * **CSS3:** For styling and responsive design (including Flexbox and Grid).
 * **JavaScript (Vanilla JS):** For interactive elements, landing page transitions, and dynamic gallery item sizing.
 
-## 📦 Project Structure
-pixel-pigments-portfolio/
-├── index.html        # Main HTML file for the website
-├── style.css         # All global and component-specific CSS styles
-├── script.js         # JavaScript for interactions and dynamic content
-├── images/           # Directory for all project images (e.g., gallery items, GIFs)
-│   └── (your image files here, e.g., kkr-wallpaper.jpg, pubg-thumb.png)
-└── README.md         # This file
-
-
 ## ⚠️ Known Issues / Areas for Improvement
 
 * **Gallery Grid Masonry Effect:** The JavaScript for calculating `grid-row-end` for the Masonry-like layout can sometimes result in `NaN` errors in the console, leading to inconsistent item sizing and spacing. This is an area for further refinement and debugging.
 * **Image Loading Errors:** Ensure all image paths are correct to avoid `404 (Not Found)` errors for gallery items and other assets.
 * **Accessibility:** Further enhancements can be made to improve accessibility (e.g., ARIA attributes, keyboard navigation).
-* **Performance Optimization:** Implement more advanced image lazy loading and consider minifying CSS/JS for production.
+* **Performance Optimization:** Implementing more advanced image/videos, video player, smoother loading and considering minifying CSS/JS for production.
 
 ---
 
