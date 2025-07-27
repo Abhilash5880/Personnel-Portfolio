@@ -4,7 +4,7 @@ A modern, responsive, and interactive web portfolio showcasing a collection of d
 
 ## 🚀 Live Demo
 
-[(https://abhilash5880.github.io/Artwork-Portfolio)]
+https://abhilash5880.github.io/Artwork-Portfolio
 
 ## ✨ Features
 
