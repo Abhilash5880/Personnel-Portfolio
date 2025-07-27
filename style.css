@@ -855,7 +855,70 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     font-size: 0.9em; /* 194 */
     margin: 5px 8px 5px 10px; /* 195 */
     color: #333; /* 196 */
+    }
 }
+@media screen and (max-width: 565px)
+    
+{
+    header 
+    {
+        /* Ensure display: flex and justify-content: space-between are already here */
+        display: flex; /* Should already be here from previous suggestions */
+        justify-content: space-between; /* Should already be here */
+        align-items: center; /* Should already be here */
+        padding-left: 15px; /* Adjust as needed */
+        padding-right: 15px; /* Adjust as needed */
+
+        /* Prevent header from wrapping its direct children (title and nav) */
+        flex-wrap: nowrap; /* Crucial: Prevents main header elements from wrapping */
+    }
+
+    header h1 {
+        font-size: 1.2em; /* Keep title smaller for mobile */
+        white-space: nowrap; /* Crucial: Prevents the H1 text from wrapping */
+        flex-shrink: 0; /* Prevents the H1 from shrinking */
+        margin-right: 5px; /* Add some space between title and nav */
+        margin-left: -10px;
+    }
+
+    header nav {
+        flex-grow: 1; /* Allow navigation to take remaining space */
+        text-align: right; /* Keep nav items aligned to the right */
+        white-space: nowrap; /* Crucial: Prevents navigation links from wrapping to a new line */
+        overflow-x: auto; /* Allows horizontal scrolling WITHIN the nav if links are too long */
+        -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS */
+        /* To hide scrollbar on some browsers, but still allow scroll: */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+    }
+
+    /* For Webkit browsers (Chrome, Safari) */
+    header nav::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+    }
+
+    header nav a {
+        font-size: 0.7em; /* Make navigation links even smaller if necessary */
+        padding: 3px 4px; /* Reduce padding around links more if needed */
+        display: inline-block; /* Ensure padding works correctly */
+    }
+
+    header nav ul
+    {
+     gap:14px;
+     padding-left: 30px;
+    }
+
+    header nav ul li {
+    margin-left: 10px;
+    }
+
+    header nav ul li a:hover,
+    header nav ul li a.active 
+    {
+    border-radius: 20px; /* Corners become rounded */
+    padding: 4px 15px; /* Padding expands */
+   }
 
 }
 
