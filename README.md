@@ -4,7 +4,7 @@ A modern, responsive, and interactive web portfolio showcasing a collection of d
 
 ## 🚀 Live Demo
 
-[`https://abhilash5880.github.io/Artwork-Portfolio/`]
+[(https://abhilash5880.github.io/Artwork-Portfolio)]
 
 ## ✨ Features
 
@@ -44,6 +44,6 @@ pixel-pigments-portfolio/
 
 ## 📞 Contact
 
-[Your Name/Alias] - [Your Email/GitHub Profile Link/Portfolio Link]
+Abhilash Palit - abhilashpalit80@gmail.com/[GitHub Profile Link](https://github.com/Abhilash5880)/]
 
 ---
