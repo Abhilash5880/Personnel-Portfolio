@@ -691,17 +691,17 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 {
     .hero-section h2
     {
-       font-size: 2.5em;
+       font-size: 2em;
     }
     .hero-section p
     {
-       font-size: 1.1em;
+       font-size: 0.8em;
     }
     .hero-section .button
     {
-        padding : 10px 20px;
-        font-size: 1em;
-        margin-bottom: 30px;
+        padding : 8px 16px;
+        font-size: 0.8em;
+        margin-bottom: 24px;
     }
     .scroll-down
     {
@@ -919,6 +919,80 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     border-radius: 20px; /* Corners become rounded */
     padding: 4px 15px; /* Padding expands */
    }
+}
+
+@media screen and (max-width: 767px) {
+
+    /* --- HERO SECTION LAYOUT ADJUSTMENTS --- */
+    #hero.hero-section {
+        flex-direction: column; /* Stack children vertically */
+        justify-content: flex-start; /* Align content to the start (top) of the flex container */
+        align-items: center; /* Center items horizontally (like the GIF and the text block) */
+        padding: 0; /* Remove padding here, it will be added to individual sections/containers */
+        min-height: 100vh; /* Ensure hero section takes full viewport height for stacking */
+        position: relative; /* If you have absolute/fixed children, make sure they are relative to this */
+    }
+
+    .hero-section .top-visual-area {
+        width: 100%; /* Make GIF area take full width */
+        /* Set a specific height for the GIF area relative to viewport height.
+           This makes the GIF take roughly the top half of the screen,
+           allowing text to appear below. Adjust 50vh as needed. */
+        height: 50vh; /* Example: Takes 50% of viewport height */
+        overflow: hidden; /* Hide any overflow if GIF aspect ratio doesn't match 50vh */
+        display: flex; /* Use flex to center the image if it's smaller than the container */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-section .top-visual-area img {
+        width: 100%; /* Ensure image fills its container horizontally */
+        height: 100%; /* Ensure image fills its container vertically */
+        object-fit: cover; /* Crop image to fit without distortion */
+        display: block; /* Remove any extra space below image */
+    }
+
+    .hero-section .container {
+        width: 100%; /* Ensure text container takes full width below the GIF */
+        padding: 30px 20px; /* Add internal padding for text/button */
+        text-align: center; /* Align text and button to the center */
+        display: flex; /* Make it a flex container */
+        flex-direction: column; /* Stack its own content vertically */
+        justify-content: center; /* Vertically center its content */
+        align-items: center; /* Horizontally center its content */
+        flex-grow: 1; /* Allow this container to take up remaining vertical space */
+    }
+
+    .hero-section h2 {
+        font-size: 2em; /* Adjust font size as needed for mobile */
+        margin-bottom: 10px;
+    }
+
+    .hero-section p {
+        font-size: 0.95em; /* Adjust font size as needed for mobile */
+        margin-bottom: 20px;
+        max-width: 90%; /* Prevent very long lines on mobile */
+    }
+
+    .hero-section .button {
+        font-size: 1em; /* Adjust button text size */
+        padding: 10px 25px; /* Adjust button padding */
+    }
+
+    /* SCROLL-DOWN ARROW ALIGNMENT (from previous discussion, adjust as needed) */
+    .scroll-down {
+        /* If it's fixed/absolute, keep it relative to the viewport,
+           but ensure it doesn't overlap important content. */
+        right: 20px; /* Adjust as per your desire */
+        bottom: 20px; /* Adjust as per your desire */
+        /* It might be better to move this element or hide it on small screens
+           if it interferes with the new layout */
+    }
+
+
+    /* --- Keep your other mobile media query styles here for header, gallery etc. --- */
+
 
 }
+
 
