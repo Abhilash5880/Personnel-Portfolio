@@ -468,7 +468,7 @@ header nav ul li a.active
 }
 
 .about-section p {
-    max-width: 800px;/*Limits the width of paragraphs for readability.*/
+    max-width: 1600px;/*Limits the width of paragraphs for readability.*/
     margin: 0 auto 15px auto;/* Centers paragraphs and adds 15px bottom margin*/
     font-size: 1.2em;
     line-height: 1.4;
@@ -812,5 +812,50 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         padding: 10px 20px; /* Smaller button padding */
     }
 }
+@media screen and (max-width: 565px)
+{
+    .about-section h2,
+    .gallery-section h2,
+    .contact-section h2
+    {
+        padding-top: 5%;
+        margin-bottom: 30px; /*gives padding after section headings*/
+        position: relative;
+        /*Establishes a positioning context for the ::after pseudo-element used for the underline.*/
+        padding-bottom: 10px;
+        /*Adds space below the heading text but above the ::after underline.*/
+        font-size: 1.5em;
+    } 
 
+    .about-section h2::after,
+    .gallery-section h2::after,
+    .contact-section h2::after 
+    {
+            align-items: center;
+            width:75px;
+            height: 3.25px;
+            border-radius: 3px;
+    }
+    .about-section p 
+    {
+    max-width: 1200px;/*Limits the width of paragraphs for readability.*/
+    margin: 0 auto 20px auto;/* Centers paragraphs and adds 15px bottom margin*/
+    font-size: 0.9em;
+    line-height: 1.2;
+    font-family:'Tahoma';
+    }
+
+    .gallery-item p 
+    {
+    font-size: 0.7em; /* 197 */
+    margin: 0 10px 10px 10px; /* 199 */
+    line-height: 1; /* 200 */
+    }
+    .gallery-item h3 {
+    font-size: 0.9em; /* 194 */
+    margin: 5px 8px 5px 10px; /* 195 */
+    color: #333; /* 196 */
+}
+
+}
 
