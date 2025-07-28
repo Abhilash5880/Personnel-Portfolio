@@ -119,12 +119,6 @@ header nav ul li a {
     text-decoration: none;
     font-weight: bolder;
 
-    /* Base styles for the button-like effect.
-       Start with no background/border-radius/padding if you want them to *appear* on hover.
-       If you want them to always have this shape, but change color/background,
-       set the padding/border-radius to the same value as hover.
-       LET'S ASSUME you want them to *grow* into the button shape on hover:
-    */
     padding: 0px 0px; /* Start with no padding */
     background-color: transparent; /* Start with no background */
     border-radius: 0px; /* Start with no border-radius */
@@ -144,24 +138,14 @@ header nav ul li a.active {
     padding: 8px 22px; /* Padding expands */
 }
 
-/* This rule was a duplicate, combining it with the one above is cleaner. */
-/* header nav ul li a:hover,
-header nav ul li a.active
-{
-    color: #000000;
-    background-color: white;
-    border-radius: 20px;
-    padding: 8px 22px;
-    font-weight: bolder;
-} */
-
-/* --- Hero Section Styles (Full-Screen Landing Page) --- */
 .hero-section {
     /* Your existing background settings for the whole hero section */
     background-color: rgb(255, 255, 255); /* Or any other background color for the hero section */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
     
     color: rgb(0, 0, 0); /* Sets default text color for content within hero-section */
     text-align: center; /* Centers inline-level text directly within hero-section, but Flexbox will govern main children */
@@ -179,21 +163,11 @@ header nav ul li a.active
     align-items: center; /* Horizontally centers its direct children (the visual area and the text container) */
 
     padding: 0;
-    /* >>> FIX START <<< */
-    /* This transition is likely for the hero section itself to fade out. */
-    /* Ensure it's not conflicting with visibility/positioning if you're making it disappear. */
-    /* If the hero section is meant to "go away" (e.g., using display: none or position: absolute + top/left/etc) */
-    /* you'll need JavaScript to control that. For now, it's just about showing the main content. */
     transition: opacity 0.8s ease-out;
     /* >>> FIX END <<< */
 
 
-    /* Remove these properties from here if you have them, they might conflict */
-    /* opacity: 1; */
-    /* top: 0; */
-    /* left: 0; */
-    /* z-index: 999; */
-    /* position: absolute; */ /* hero-section should ideally be static or relative, not absolute for overall layout */
+   ve, not absolute for overall layout */
 }
 
 .hero-section::before {
@@ -253,13 +227,14 @@ header nav ul li a.active
 }
 /* Reduce gap between H2 and P tags */
 .hero-section .container h2 {
-    margin-bottom: 4px;
+    margin-bottom: 1%;
     ;
 }
 
 .hero-section .container p {
     margin-top: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
 }
 
 /*.hero-section .button
@@ -492,6 +467,7 @@ header nav ul li a.active
     flex-wrap: wrap;/*Allows filter buttons to wrap to the next line on smaller screens.*/
     justify-content: center;
     gap: 10px;
+    
 }
 .filter-btn {
     background-color: #e0e0e0;
@@ -504,6 +480,9 @@ header nav ul li a.active
     font-weight: bold;
     /* CHANGE THIS LINE: Add 'transform 0.2s ease' to the transition */
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border-width: 2px;
+    border-color: #212121;
+    border-style: solid;
 }
 
 .filter-btn:hover {
@@ -949,6 +928,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         display: flex; /* Use flex to center the image if it's smaller than the container */
         justify-content: center;
         align-items: center;
+        box-shadow: 0px 15px 20px rgb(226, 183, 255);
     }
 
     .hero-section .top-visual-area img {
@@ -956,6 +936,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 100%; /* Ensure image fills its container vertically */
         object-fit: cover; /* Crop image to fit without distortion */
         display: block; /* Remove any extra space below image */
+        box-shadow: 0px 15px 20px rgb(226, 183, 255);
     }
 
     .hero-section .container {
