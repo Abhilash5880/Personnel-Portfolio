@@ -159,8 +159,8 @@ header nav ul li a.active
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    text-shadow:0 2px 3px #3c3c3c49;
-    color: rgb(11, 3, 3); /* Sets default text color for content within hero-section */
+    
+    color: rgb(0, 0, 0); /* Sets default text color for content within hero-section */
     text-align: center; /* Centers inline-level text directly within hero-section, but Flexbox will govern main children */
 
     /* Full viewport height for the entire hero section */
@@ -251,6 +251,7 @@ header nav ul li a.active
 /* Reduce gap between H2 and P tags */
 .hero-section .container h2 {
     margin-bottom: 4px;
+    ;
 }
 
 .hero-section .container p {
@@ -737,13 +738,15 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 
     /* Hero section content adjustments for mobile */
     .hero-section .container {
-        padding: 20px 15px 30px 15px; /* Reduced padding for mobile hero text/button area */
-        align-items: flex-end; /* Keep text/button aligned right as per previous request */
+        padding: 1% 15px 30px 15px; /* Reduced padding for mobile hero text/button area */
+         /* Keep text/button aligned right as per previous request */
         text-align: right;
+        font-size: 0.8em;
     }
     .hero-section h2 
     {
         font-size: 2em; /* Smaller heading */
+
     }
     .hero-section p {
         font-size: 0.9em; /* Smaller paragraph */
@@ -954,12 +957,12 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 
     .hero-section .container {
         width: 100%; /* Ensure text container takes full width below the GIF */
-        padding: 30px 20px; /* Add internal padding for text/button */
-        text-align: center; /* Align text and button to the center */
+        
+        text-align: right; /* Align text and button to the center */
         display: flex; /* Make it a flex container */
         flex-direction: column; /* Stack its own content vertically */
         justify-content: center; /* Vertically center its content */
-        align-items: center; /* Horizontally center its content */
+        align-items:flex-end; /* Horizontally center its content */
         flex-grow: 1; /* Allow this container to take up remaining vertical space */
     }
 
@@ -971,12 +974,13 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     .hero-section p {
         font-size: 0.95em; /* Adjust font size as needed for mobile */
         margin-bottom: 20px;
-        max-width: 90%; /* Prevent very long lines on mobile */
+        max-width: 100%; /* Prevent very long lines on mobile */
     }
 
     .hero-section .button {
         font-size: 1em; /* Adjust button text size */
         padding: 10px 25px; /* Adjust button padding */
+        
     }
 
     /* SCROLL-DOWN ARROW ALIGNMENT (from previous discussion, adjust as needed) */
