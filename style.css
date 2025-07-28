@@ -164,10 +164,7 @@ header nav ul li a.active {
 
     padding: 0;
     transition: opacity 0.8s ease-out;
-    /* >>> FIX END <<< */
 
-
-   ve, not absolute for overall layout */
 }
 
 .hero-section::before {
