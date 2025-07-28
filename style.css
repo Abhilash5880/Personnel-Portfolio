@@ -48,6 +48,9 @@ html {
     color: rgb(255, 255, 255);
     padding: 12px 20px; /*top/bottom padding and left/right padding*/
     border-radius: 20px; /*rounds corner of button*/
+    border-color:#000000;
+    border-style: solid;
+    box-shadow:0 1px 30px #ca84ff;
 
     text-decoration: none;
     font-weight: bold;
@@ -218,7 +221,7 @@ header nav ul li a.active
     align-items: center;
     z-index: 1; /* Placed below text content */
     overflow: hidden;
-    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 15px 20px rgb(226, 183, 255);
     transition: all 0.5s ease-in-out; /* Downward shadow, slightly blurred, semi-transparent black */
 }
 
