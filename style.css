@@ -131,7 +131,7 @@ header {
 
 /*---Header Styles ---*/
 header {
-    background-color: #333; /*sets a dark grey background for header*/
+    background-color: #272727; /*sets a dark grey background for header*/
     color: white;/* changes colour of text in Header*/
     padding: 1rem;/*Adds vertical padding
     (1rem = typically 16px) to the header, no horizontal padding as the .container handles that.*/
@@ -209,8 +209,6 @@ header nav ul li a.active {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    font-family:cursive;
-    
     
     color: rgb(255, 255, 255); /* Sets default text color for content within hero-section */
     text-align: center; /* Centers inline-level text directly within hero-section, but Flexbox will govern main children */
@@ -514,7 +512,6 @@ header nav ul li a.active {
     margin: 0 auto 15px auto;/* Centers paragraphs and adds 15px bottom margin*/
     font-size: 1.2em;
     line-height: 1.4;
-    font-family:cursive;
 }
 
 /*---Gallery section styles---*/
@@ -608,11 +605,10 @@ header nav ul li a.active {
 }
 
 .gallery-item p {
-    font-size: 0.95em; /* 197 */
-    color: #ffffff; /* 198 */
+    font-size: 0.7em; /* 197 */
+    color: #ffffffc8; /* 198 */
     margin: 0 15px 15px 15px; /* 199 */
     line-height: 1.5; /* 200 */
-    font-family: cursive;
 }
 
 /*--Contact section syles--*/
@@ -840,7 +836,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         color: #c7c7c7;
     }
     .gallery-item p {
-        font-size: 0.8em; /* Smaller item description */
+        font-size: 0.7em; /* Smaller item description */
     }
 
     /* Contact section adjustments for mobile */
@@ -891,7 +887,6 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     margin: 0 auto 20px auto;/* Centers paragraphs and adds 15px bottom margin*/
     font-size: 0.9em;
     line-height: 1.2;
-    font-family:cursive;
 }
     }
 
