@@ -612,6 +612,7 @@ header nav ul li a.active {
     color: #ffffff; /* 198 */
     margin: 0 15px 15px 15px; /* 199 */
     line-height: 1.5; /* 200 */
+    font-family: cursive;
 }
 
 /*--Contact section syles--*/
@@ -905,7 +906,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     margin: 5px 8px 5px 10px; /* 195 */
     color: #c7c7c7; /* 196 */
     }
-}
+
 @media screen and (max-width: 565px)
     
 {
