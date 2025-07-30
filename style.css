@@ -12,8 +12,8 @@ body {
     margin: 0; /*Removes the default outer spacing (margin) that browsers apply to the body element.*/
     padding: 0; /*removes default inner padding*/
     line-height: 1.3; /*gives space between text*/
-    color: #1b0404;
-    background-color: #ffffff;
+    color: #fffefe;
+    background-color: #000000;
 }
 /* Crucial for fixed landing page: Hide overflow initially */
 html, body {
@@ -33,6 +33,71 @@ html {
     scroll-behavior:smooth;/*Enables smooth scrolling when a user clicks on an anchor link */
 }
 /* General Container for Centering Content */
+
+/*modal styling---*/
+/* --- Fullscreen Image Modal Styles --- */
+.image-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stays in the same position even when scrolling */
+    z-index: 999; /* Higher than most content, but lower than your header's z-index: 1000 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if image is larger than viewport */
+    background-color: rgba(0, 0, 0, 0.9); /* Black background with 90% opacity */
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    /* Add a smooth transition for showing/hiding if using opacity/visibility */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-image {
+    max-width: 90%; /* Keep image within 90% of modal width */
+    max-height: 90%; /* Keep image within 90% of modal height */
+    display: block; /* Remove extra space below image */
+    margin: auto; /* Center image within flex container fallback */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    user-select: none; /* Prevent selection (copy/paste) */
+    -webkit-user-select: none; /* For Webkit browsers */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For IE/Edge */
+    pointer-events: auto; /* Ensure events work on image */
+}
+
+/* Style for the close button */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above the image */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Ensure header stays on top (your existing header z-index should handle this) */
+header {
+    z-index: 1000; /* Make sure this is still present and higher than the modal's z-index */
+    position: sticky; /* Or fixed if it was */
+}
 .container {
     max-width: 1200px; /*Limits the maximum width of content within elements
     that use the .container class, preventing content from stretching too wide on large screens.*/
@@ -50,7 +115,7 @@ html {
     border-radius: 20px; /*rounds corner of button*/
     border-color:#000000;
     border-style: solid;
-    box-shadow:0 1px 30px #ca84ff;
+    box-shadow:0 1px 30px #35005e;
 
     text-decoration: none;
     font-weight: bold;
@@ -140,14 +205,14 @@ header nav ul li a.active {
 
 .hero-section {
     /* Your existing background settings for the whole hero section */
-    background-color: rgb(255, 255, 255); /* Or any other background color for the hero section */
+    background-color: rgb(0, 0, 0); /* Or any other background color for the hero section */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:cursive;
     
     
-    color: rgb(0, 0, 0); /* Sets default text color for content within hero-section */
+    color: rgb(255, 255, 255); /* Sets default text color for content within hero-section */
     text-align: center; /* Centers inline-level text directly within hero-section, but Flexbox will govern main children */
 
     /* Full viewport height for the entire hero section */
@@ -192,7 +257,7 @@ header nav ul li a.active {
     align-items: center;
     z-index: 1; /* Placed below text content */
     overflow: hidden;
-    box-shadow: 0px 15px 20px rgb(226, 183, 255);
+    box-shadow: 0px 15px 20px rgb(35, 0, 58);
     transition: all 0.5s ease-in-out; /* Downward shadow, slightly blurred, semi-transparent black */
 }
 
@@ -232,6 +297,7 @@ header nav ul li a.active {
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 1.1em;
+    
 }
 
 /*.hero-section .button
@@ -416,8 +482,8 @@ header nav ul li a.active {
     /*Adds space below the heading text but above the ::after underline.*/
     font-size: 2.5em;
     font-family:'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
-    color: #212121;
-    text-shadow: 0 2px 3px #cbcbcb;
+    color: #d8d8d8;
+    text-shadow: 0 2px 3px #0a0a0a;
 }
 /*adding underlines after the headings*/
 .about-section h2::after,
@@ -437,9 +503,9 @@ header nav ul li a.active {
 /*---about section styles---*/
 .about-section {
     padding: 80px;
-    background-image: url(images/18705226_v1016-a-10.jpg);
+    background-color: #1a1a1a ;
     text-align: center;
-    box-shadow: 0 2px 20px #21212133;
+    box-shadow: 0 2px 20px #1c1c1c;
     margin-bottom: 40px;
 }
 
@@ -448,13 +514,13 @@ header nav ul li a.active {
     margin: 0 auto 15px auto;/* Centers paragraphs and adds 15px bottom margin*/
     font-size: 1.2em;
     line-height: 1.4;
-    font-family:'Tahoma';
+    font-family:cursive;
 }
 
 /*---Gallery section styles---*/
 .gallery-section {
     padding: 40px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     text-align: center;
 }
 /*filter-buttons*/
@@ -467,8 +533,8 @@ header nav ul li a.active {
     
 }
 .filter-btn {
-    background-color: #e0e0e0;
-    color: #333;
+    background-color: #000000;
+    color: #4d4d4d;
     border: none;
     padding: 10px 20px;
     border-radius: 25px;
@@ -513,11 +579,11 @@ header nav ul li a.active {
 
 /*--individual gallery item style--*/
 .gallery-item {
-    background-color: #fff;
+    background-color: #202020;
     border-radius:8px;
     overflow: hidden;/*Hides any content that spills outside the rounded corners,
     especially useful for images.*/
-    box-shadow: 0 4px 15px  rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px  rgba(69, 69, 69, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
 
@@ -529,7 +595,6 @@ header nav ul li a.active {
     height: auto;
     display: block; /*Scales and crops the image to fill the
     given dimensions without distortion.*/
-    border-bottom: 1px solid#eee;
 }
 .gallery-item:hover {
     transform: translateY(-8px);/*adds animation*/
@@ -539,12 +604,12 @@ header nav ul li a.active {
 .gallery-item h3 {
     font-size: 1.3em; /* 194 */
     margin: 15px 15px 5px 15px; /* 195 */
-    color: #333; /* 196 */
+    color: #c7c7c7; /* 196 */
 }
 
 .gallery-item p {
     font-size: 0.95em; /* 197 */
-    color: #666; /* 198 */
+    color: #ffffff; /* 198 */
     margin: 0 15px 15px 15px; /* 199 */
     line-height: 1.5; /* 200 */
 }
@@ -555,7 +620,7 @@ header nav ul li a.active {
     background-color: white;
     text-align: center;
     box-shadow:  0 0px 20px rgba(0, 0, 0, 0.293);
-    background-color: #ffffff;
+    background-color: #1a1a1a ;
 }
 .contact-section p {
     max-width: 700px;
@@ -568,7 +633,7 @@ header nav ul li a.active {
     max-width: 600px;
     margin: 0 auto;
     padding: 30px;
-    background-color: #bcbcbc;
+    background-color: #696969;
     border-radius: 10px;
     box-shadow: 8px; /* This looks like an incomplete or incorrect box-shadow value. It should be 4 values + color. */
     display: flex;
@@ -582,7 +647,7 @@ header nav ul li a.active {
     font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 5px;
     display: block; /*Makes labels take up their own line.*/
-    color: #2b2b2b;
+    color: #ffffff;
 }
 
 .contact-section input[type="text"],
@@ -590,7 +655,7 @@ header nav ul li a.active {
 .contact-section textarea {
     width: 100%;
     padding: 12px;
-    border: 3px solid #606060;
+    border: 3px solid #000000;
     border-radius: 5px;
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -771,6 +836,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     }
     .gallery-item h3 {
         font-size: 1em; /* Smaller item title */
+        color: #c7c7c7;
     }
     .gallery-item p {
         font-size: 0.8em; /* Smaller item description */
@@ -824,7 +890,8 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     margin: 0 auto 20px auto;/* Centers paragraphs and adds 15px bottom margin*/
     font-size: 0.9em;
     line-height: 1.2;
-    font-family:'Tahoma';
+    font-family:cursive;
+}
     }
 
     .gallery-item p 
@@ -836,7 +903,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     .gallery-item h3 {
     font-size: 0.9em; /* 194 */
     margin: 5px 8px 5px 10px; /* 195 */
-    color: #333; /* 196 */
+    color: #c7c7c7; /* 196 */
     }
 }
 @media screen and (max-width: 565px)
@@ -925,7 +992,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         display: flex; /* Use flex to center the image if it's smaller than the container */
         justify-content: center;
         align-items: center;
-        box-shadow: 0px 15px 20px rgb(226, 183, 255);
+        box-shadow: 0px 15px 20px rgb(35, 0, 58);
     }
 
     .hero-section .top-visual-area img {
@@ -933,7 +1000,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 100%; /* Ensure image fills its container vertically */
         object-fit: cover; /* Crop image to fit without distortion */
         display: block; /* Remove any extra space below image */
-        box-shadow: 0px 15px 20px rgb(226, 183, 255);
+        box-shadow: 0px 15px 20px rgb(35, 0, 58);
     }
 
     .hero-section .container {

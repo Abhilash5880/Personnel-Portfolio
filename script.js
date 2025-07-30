@@ -4,6 +4,95 @@ if (currentYearSpan) { // Check if the element exists to prevent errors
     currentYearSpan.textContent = new Date().getFullYear();
 }
 
+/////////////////////////////
+document.addEventListener('DOMContentLoaded', () => {
+    // === Landing Page Logic (from previous discussions, ensure it's here) ===
+    const heroSection = document.getElementById('hero');
+    const mainContentWrapper = document.querySelector('.main-content-wrapper');
+    const enterPortfolioLink = heroSection.querySelector('.scroll-down a');
+
+    if (enterPortfolioLink && mainContentWrapper) {
+        enterPortfolioLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default anchor link behavior
+
+            heroSection.classList.add('fade-out'); // Add a class to fade out hero
+            // In CSS, you'd define .hero-section.fade-out { opacity: 0; visibility: hidden; transition: opacity 1s ease, visibility 1s ease; }
+
+            // Wait for fade-out to complete (adjust time based on your CSS transition)
+            setTimeout(() => {
+                heroSection.style.display = 'none'; // Hide hero section completely
+                mainContentWrapper.classList.add('active'); // Show main content
+                document.body.style.overflow = 'auto'; // Re-enable body scrolling
+                // For initial hidden state, make sure html, body has overflow: hidden;
+                // document.documentElement.style.overflow = 'auto'; // For html element
+            }, 1000); // Match this timeout to your hero fade-out transition duration
+        });
+    }
+
+    // --- Image Modal Logic ---
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    const imageModal = document.getElementById('image-modal');
+    const modalImage = document.querySelector('.modal-image');
+    const closeButton = document.querySelector('.close-button');
+
+    // Function to open the modal
+    function openImageModal(imageSrc) {
+        modalImage.src = imageSrc;
+        imageModal.classList.add('active'); // Add 'active' class to show modal
+        document.body.style.overflow = 'hidden'; // Prevent scrolling background
+    }
+
+    // Function to close the modal
+    function closeImageModal() {
+        imageModal.classList.remove('active'); // Remove 'active' class to hide modal
+        document.body.style.overflow = 'auto'; // Re-enable scrolling background
+    }
+
+    // Add click listeners to all gallery images
+    galleryImages.forEach(image => {
+        image.addEventListener('click', () => {
+            openImageModal(image.src);
+        });
+    });
+
+    // Add click listener to the close button
+    closeButton.addEventListener('click', closeImageModal);
+
+    // Close modal if user clicks outside the image (on the modal background)
+    imageModal.addEventListener('click', (e) => {
+        if (e.target === imageModal) { // Check if the click was directly on the modal background
+            closeImageModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+            closeImageModal();
+        }
+    });
+
+    // === Prevent Right-Click/Download on Modal Image ===
+    modalImage.addEventListener('contextmenu', (e) => {
+        e.preventDefault(); // Prevents the default right-click context menu
+        alert("Image download is disabled."); // Optional: provide user feedback
+    });
+
+    // If you want to prevent right-click on ALL gallery images (even before modal opens)
+    // galleryImages.forEach(image => {
+    //     image.addEventListener('contextmenu', (e) => {
+    //         e.preventDefault();
+    //         alert("Image download is disabled.");
+    //     });
+    // });
+
+    // --- Footer Year (ensure this is also in your JS) ---
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+});
+/////////////////////////////
 // Ensure all DOM content is loaded before running scripts that manipulate elements
 document.addEventListener('DOMContentLoaded', () => {
 
