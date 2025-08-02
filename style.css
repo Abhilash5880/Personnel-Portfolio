@@ -238,9 +238,9 @@ header nav ul li a.active {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Placed below text content */
+    z-index: 1000; /* Placed below text content */
     overflow: hidden;
-    box-shadow: 0px 1px 50px rgba(160, 29, 247, 0.534);
+    box-shadow: 0px 1px 80px rgba(212, 0, 255, 0.503);
     transition: all 0.5s ease-in-out; /* Downward shadow, slightly blurred, semi-transparent black */
 }
 
@@ -973,7 +973,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         display: flex; /* Use flex to center the image if it's smaller than the container */
         justify-content: center;
         align-items: center;
-       box-shadow: 0px 1px 80px rgba(168, 46, 255, 0.471);
+       box-shadow: 0px 1px 80px rgba(212, 0, 255, 0.503);
     }
 
     .hero-section .top-visual-area img {
@@ -981,7 +981,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 100%; /* Ensure image fills its container vertically */
         object-fit: cover; /* Crop image to fit without distortion */
         display: block; /* Remove any extra space below image */
-        box-shadow: 0px 15px 20px rgb(35, 0, 58);
+        box-shadow: 0px 1px 80px rgba(212, 0, 255, 0.503);
     }
 
     .hero-section .container {
