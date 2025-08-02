@@ -1,4 +1,4 @@
-// Get the current year for the footer copyright
+ // Get the current year for the footer copyright
 const currentYearSpan = document.getElementById('current-year');
 if (currentYearSpan) { // Check if the element exists to prevent errors
     currentYearSpan.textContent = new Date().getFullYear();
