@@ -240,7 +240,7 @@ header nav ul li a.active {
     align-items: center;
     z-index: 1000; /* Placed below text content */
     overflow: hidden;
-    box-shadow: 0px 1px 80px rgba(212, 0, 255, 0.503);
+    box-shadow: 0px 0px 50px rgba(212, 0, 255, 0.503);
     transition: all 0.5s ease-in-out; /* Downward shadow, slightly blurred, semi-transparent black */
 }
 
@@ -380,46 +380,6 @@ header nav ul li a.active {
 .scroll-down a:hover {
     opacity: 1;
     transform: translateY(5px); /* Example: little bounce effect on hover */
-}
-
-/* --- Styles for the Arrow --- */
-.arrow-down {
-    /* REMOVE any existing width/height/border-left/border-right/border-top properties here */
-
-    width: 0;
-    height: 0;
-    border-left: 30px solid transparent; /* Adjust size of arrow base */
-    border-right: 30px solid transparent; /* Adjust size of arrow base */
-    
-    border-bottom: 10px solid rgb(56, 38, 79); /* *** This creates a downward-pointing white arrow *** */
-    /* Adjust '10px' values to make the arrow bigger or smaller */
-
-    margin-top: -60px; /* Space between the (now invisible) text area and the arrow */
-     /* Keep your bounce animation if you like it */
-
-    /* Ensure no conflicting transforms or positions from previous setups */
-    transform: none; /* Reset any previous transforms if they are here */
-}
-
-/* Remove or comment out .scroll-down span if you completely remove the span from HTML */
-/* If you keep any text in the span, just remove margin-bottom: 10px; */
-/*
-.scroll-down span {
-    // margin-bottom: 10px; // remove this if no text
-}
-*/
-
-/* --- Your bounce animation (ensure this is defined in your CSS) --- */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px); /* Bounces up */
-    }
-    60% {
-        transform: translateY(-5px); /* Recoil slightly */
-    }
 }
 
 .main-content-wrapper {
@@ -973,7 +933,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         display: flex; /* Use flex to center the image if it's smaller than the container */
         justify-content: center;
         align-items: center;
-       box-shadow: 0px 1px 80px rgba(212, 0, 255, 0.503);
+       box-shadow: 0px 0px 20px rgba(212, 0, 255, 0.503);
     }
 
     .hero-section .top-visual-area img {
@@ -981,7 +941,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 100%; /* Ensure image fills its container vertically */
         object-fit: cover; /* Crop image to fit without distortion */
         display: block; /* Remove any extra space below image */
-        box-shadow: 0px 1px 80px rgba(212, 0, 255, 0.503);
+        box-shadow: 0px 0px 20px rgb(212, 0, 255);
     }
 
     .hero-section .container {
