@@ -1,10 +1,10 @@
-// Get the current year for the footer copyright
+
 const currentYearSpan = document.getElementById('current-year');
 if (currentYearSpan) { // Check if the element exists to prevent errors
     currentYearSpan.textContent = new Date().getFullYear();
 }
 
-/////////////////////////////
+
 document.addEventListener('DOMContentLoaded', () => {
     // === Landing Page Logic (from previous discussions, ensure it's here) ===
     const heroSection = document.getElementById('hero');
@@ -15,17 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
         enterPortfolioLink.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent default anchor link behavior
 
-            heroSection.classList.add('fade-out'); // Add a class to fade out hero
-            // In CSS, you'd define .hero-section.fade-out { opacity: 0; visibility: hidden; transition: opacity 1s ease, visibility 1s ease; }
-
-            // Wait for fade-out to complete (adjust time based on your CSS transition)
+            heroSection.classList.add('fade-out'); 
             setTimeout(() => {
                 heroSection.style.display = 'none'; // Hide hero section completely
                 mainContentWrapper.classList.add('active'); // Show main content
-                document.body.style.overflow = 'auto'; // Re-enable body scrolling
-                // For initial hidden state, make sure html, body has overflow: hidden;
-                // document.documentElement.style.overflow = 'auto'; // For html element
-            }, 1000); // Match this timeout to your hero fade-out transition duration
+                document.body.style.overflow = 'auto'; 
+            }, 1000); 
         });
     }
 
@@ -78,124 +73,94 @@ document.addEventListener('DOMContentLoaded', () => {
         alert("Image download is disabled."); // Optional: provide user feedback
     });
 
-    // If you want to prevent right-click on ALL gallery images (even before modal opens)
-    // galleryImages.forEach(image => {
-    //     image.addEventListener('contextmenu', (e) => {
-    //         e.preventDefault();
-    //         alert("Image download is disabled.");
-    //     });
-    // });
-
-    // --- Footer Year (ensure this is also in your JS) ---
+   
+    
     const currentYearSpan = document.getElementById('current-year');
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 });
-/////////////////////////////
-// Ensure all DOM content is loaded before running scripts that manipulate elements
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // function to calculate grid and rows for varying image sizes
+     // function to calculate grid and rows for varying image sizes
     function applyMasonryLayout() {
         const galleryItems = document.querySelectorAll('.gallery-item');
         if (!galleryItems.length) return;
 
         const filterableGalleryGrid = document.getElementById('filterable-gallery-grid');
-        let gridAutoRowsValue = parseFloat(getComputedStyle(filterableGalleryGrid).gridAutoRows); // Get the computed value
+        let gridAutoRowsValue = parseFloat(getComputedStyle(filterableGalleryGrid).gridAutoRows);
 
-        // --- NEW/MODIFIED: Robustness check for gridAutoRowsValue ---
         if (isNaN(gridAutoRowsValue) || gridAutoRowsValue <= 0) {
-            gridAutoRowsValue = 1; // Default to 1 if it cannot be parsed or is invalid
+            gridAutoRowsValue = 1;
             console.warn('gridAutoRowsValue was invalid or zero, defaulting to 1 for span calculation.');
         }
-        console.log('gridAutoRowsValue (after validation):', gridAutoRowsValue); // Log validated value
+        console.log('gridAutoRowsValue (after validation):', gridAutoRowsValue);
 
         galleryItems.forEach(item => {
             if (item.style.display === 'none') {
-                item.style.gridRowEnd = ''; // Reset grid-row-end for hidden items
-                return; // Skip hidden items
+                item.style.gridRowEnd = '';
+                return;
             }
 
             const image = item.querySelector('img');
-            if (image) {
-                // Reset grid-row-end temporarily to get accurate clientHeight before recalculating
-                item.style.gridRowEnd = '';
+            const iframe = item.querySelector('iframe'); // Check for an iframe
 
-                const updateRowSpan = () => {
-                    const h3 = item.querySelector('h3');
-                    const p = item.querySelector('p');
+            // Define common elements for both images and videos
+            const h3 = item.querySelector('h3');
+            const p = item.querySelector('p');
+            const h3Height = h3 ? h3.offsetHeight : 0;
+            const pHeight = p ? p.offsetHeight : 0;
+            // You can adjust this padding value if your CSS changes
+            const estimatedVerticalPadding = 15 + 15 + 5 + 15;
 
-                    const h3Height = h3 ? h3.offsetHeight : 0; // Use offsetHeight for full height including padding/border
-                    const pHeight = p ? p.offsetHeight : 0; // Use offsetHeight
+            // This helper function will handle the final calculation and application
+            const updateRowSpan = (contentHeight, contentName) => {
+                const finalItemHeight = contentHeight + h3Height + pHeight + estimatedVerticalPadding;
+                let rowSpan = Math.ceil(finalItemHeight / gridAutoRowsValue);
 
-                    let imgHeight = image.clientHeight; // clientHeight is fine for image content area
-                    const imgSrc = image.src.split('/').pop(); // Get image filename for logging
-                    console.log(`--- Debugging for ${imgSrc} ---`);
-                    console.log(`Raw image.clientHeight: ${imgHeight}`);
-
-                    // Enhanced check for image loading, as images might not have loaded immediately
-                    if (imgHeight === 0 && !image.complete) {
-                        console.warn(`Image ${imgSrc} not yet loaded, attempting to wait or use placeholder.`);
-                        // If image not loaded, attach a 'load' listener and return, it will update then
-                        image.addEventListener('load', () => {
-                            // Ensure this is called with the specific item's context
-                            const newImgHeight = image.clientHeight;
-                            const newFinalItemHeight = newImgHeight + h3Height + pHeight + estimatedVerticalPadding;
-                            const newRowSpan = Math.ceil(newFinalItemHeight / gridAutoRowsValue);
-                            item.style.gridRowEnd = `span ${newRowSpan}`;
-                            console.log(`Image ${imgSrc} loaded, updated rowSpan to ${newRowSpan}`);
-                        }, { once: true });
-                        return; // Exit this iteration, the 'load' event will trigger the update
-                    } else if (imgHeight === 0 && image.complete) {
-                        console.error(`Image ${imgSrc} loaded but has 0 height! This is problematic, using placeholder.`);
-                        imgHeight = 200; // Fallback placeholder height if truly 0 after load
-                    }
-                    console.log(`Adjusted image height for calculation: ${imgHeight}`);
-
-
-                    // Adjust this based on your CSS inspection of .gallery-item padding and h3/p margins
-                    // (e.g., padding-top/bottom on .gallery-item, margin-bottom on h3 and p)
-                    // For your CSS, .gallery-item h3 has margin: 15px 15px 5px 15px; (so 5px bottom margin)
-                    // .gallery-item p has margin: 0 15px 15px 15px; (so 15px bottom margin)
-                    // You might have implicit vertical padding on .gallery-item itself.
-                    // A safer way is to measure the total height after elements are rendered:
-                    // const totalContentHeight = item.offsetHeight - image.offsetHeight; // This is tricky as image height is variable.
-                    // The 'estimatedVerticalPadding' is usually for fixed padding/margin.
-                    const estimatedVerticalPadding = 15 + 15 + 5 + 15; // Example based on your margins (top/bottom h3 margin + p margin)
-                                                                    // Re-evaluate this if the padding/margins on .gallery-item itself change.
-
-                    const finalItemHeight = imgHeight + h3Height + pHeight + estimatedVerticalPadding;
-
-                    console.log(`H3 Height: ${h3Height}`);
-                    console.log(`P Height: ${pHeight}`);
-                    console.log(`Estimated Padding: ${estimatedVerticalPadding}`);
-                    console.log(`Final Item Height (total item content height): ${finalItemHeight}`);
-
-                    let rowSpan = Math.ceil(finalItemHeight / gridAutoRowsValue);
-
-                    // Final validation for rowSpan to prevent NaN or non-positive values
-                    if (isNaN(rowSpan) || rowSpan <= 0) {
-                        rowSpan = 1; // Default to 1 to prevent layout issues
-                        console.error(`Calculated rowSpan for ${imgSrc} is invalid (${rowSpan}), defaulting to 1.`);
-                    }
-                    console.log(`Calculated Row Span: ${rowSpan}`);
-
-                    item.style.gridRowEnd = `span ${rowSpan}`;
-                };
-
-                // Use image.decode() for more reliable measurement after decoding
-                if (image.complete && image.naturalHeight !== 0) {
-                    updateRowSpan();
-                } else {
-                    image.addEventListener('load', updateRowSpan, { once: true });
-                    // If image is still not loaded or has 0 height after load, a small timeout can sometimes help
-                    // (though 'load' event is generally preferred)
-                    // setTimeout(() => { if (image.clientHeight === 0) updateRowSpan(); }, 100);
+                if (isNaN(rowSpan) || rowSpan <= 0) {
+                    rowSpan = 1;
+                    console.error(`Calculated rowSpan for ${contentName} is invalid (${rowSpan}), defaulting to 1.`);
                 }
+                
+                item.style.gridRowEnd = `span ${rowSpan}`;
+                console.log(`Updated rowSpan for ${contentName} to ${rowSpan}`);
+            };
+
+            if (image) {
+                // Logic for image items
+                const imgSrc = image.src.split('/').pop();
+                console.log(`--- Debugging for ${imgSrc} ---`);
+
+                if (image.complete && image.naturalHeight !== 0) {
+                    updateRowSpan(image.clientHeight, imgSrc);
+                } else {
+                    image.addEventListener('load', () => updateRowSpan(image.clientHeight, imgSrc), { once: true });
+                }
+            } else if (iframe) {
+                // Logic for video items (if no image is found)
+                const iframeSrc = iframe.src.split('/').pop();
+                console.log(`--- Debugging for iframe ${iframeSrc} ---`);
+                
+                // Get the height from the iframe. The CSS will ensure this is the correct aspect ratio.
+                const videoHeight = iframe.clientHeight;
+                
+                if (videoHeight > 0) {
+                    updateRowSpan(videoHeight, iframeSrc);
+                } else {
+                    // Fallback if clientHeight is 0 (this shouldn't happen with the new CSS)
+                    console.warn(`iframe ${iframeSrc} has 0 height, using a default value.`);
+                    updateRowSpan(315, iframeSrc + " (fallback)"); // Using default YouTube height
+                }
+            } else {
+                // Fallback for items with no image or iframe
+                console.warn('Gallery item has no image or iframe, using a default height.');
+                updateRowSpan(200, "Unknown Item (fallback)");
             }
         });
     }
+
 
 
     // --- Artwork Filtering Functionality ---

@@ -530,6 +530,15 @@ header nav ul li a.active {
     text-align: left;
 
 }
+/* --- Video Aspect Ratio Fix --- */
+.gallery-item iframe {
+    width: 100%;
+    /* The height will be handled by the aspect ratio calculation, not a fixed value */
+    height: auto; 
+    aspect-ratio: 16 / 9; /* This is the modern, simple way to maintain a 16:9 ratio */
+    display: block; /* Prevents extra space below the iframe */
+    margin-bottom: 15px; /* Add some space below the video */
+}
 
 .gallery-item img { /* This should be .gallery-item img - fixing the colon to space */
     width: 100%;
