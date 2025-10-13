@@ -567,9 +567,47 @@ header nav ul li a.active {
     line-height: 1.5; /* 200 */
 }
 
+#projects {
+    overflow-x: hidden; /* CRITICAL: Hide any overflow outside the section to prevent scrollbars */
+    padding: 60px 0;    /* Good practice for section padding */
+    
+}
+
+#project-gallery-grid,
+.projects-grid { /* Based on your HTML snippet */
+    
+    display: grid; 
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; 
+    
+    /* Ensure the grid doesn't try to stretch beyond the container's width */
+    max-width: 1200px; /* Or whatever your main content width is */
+    margin: 0 auto;    /* Center the grid */
+    padding: 0 20px;   /* Add internal padding to prevent items from touching screen edges */
+}
+
+
+@media(min-width:865px)
+{
+.projects-grid {
+    display: grid;
+    /* Use 'auto-fit' with a reasonable min-width to ensure responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; 
+    
+    /* CRITICAL FOR CONTAINMENT */
+    /* Use a max-width to center the grid on large screens,
+       but ensure the container is fluid enough on small screens */
+    max-width: 1200px; /* Adjust this to your overall site width */
+    margin: 0 auto;    /* Centers the entire grid container */
+    padding: 0 20px;   /* PADDING: Prevents items from sticking to the screen edges */
+    
+}}
+
 /*--individual project item style--*/
 .project-item {
-    background-color: #202020;
+    background-color: #3c3c3c;
     
     /*overflow: hidden;/*Hides any content that spills outside the rounded corners,
     especially useful for images.*/
@@ -581,16 +619,16 @@ header nav ul li a.active {
     flex-wrap:inherit;/*Allows filter buttons to wrap to the next line on smaller screens.*/
     padding: 4%;
     margin-inline: 2%;
-    
-
+    border-radius: 10px;
+    color:#8529ff;
 }
 
-@media(max-width:480px)
+@media(max-width:865px)
 {
     .project-item{
         display: flex;
         flex-direction: column;
-        
+        margin-bottom: 5%;
     }
 }
 
@@ -623,6 +661,7 @@ header nav ul li a.active {
     transition: transform 0.5s ease-in-out, 
                 position 0.5s, 
                 z-index 0.5s;
+    
 }
 
 }
@@ -650,7 +689,7 @@ header nav ul li a.active {
     transition: transform 0.3s ease, border-color 0.3s ease; /* <-- FIXED LINE 622 */
     border-radius:8px;
     border-style: solid;
-    border-color: #8529ff; /* Assuming you want a black border on hover, but this color should be set */
+    border-color: #994ffa; /* Assuming you want a black border on hover, but this color should be set */
     
     
 
@@ -659,8 +698,8 @@ header nav ul li a.active {
 
 .project-item h3 {
     font-size: 1.3em; /* 194 */
-    margin: 15px 15px 5px 15px; /* 195 */
-    color: #c7c7c7; /* 196 */
+    margin: 15px 15px 15px 15px; /* 195 */
+    color: #f1f1f1; /* 196 */
 }
 .project-item h3:hover 
 {
@@ -669,8 +708,29 @@ header nav ul li a.active {
     margin: 15px 15px 5px 15px; /* 195 */
     
 }
+.project-item p1 {
+    font-size: 0.8em; /* 197 */
+    color: #ffffff; /* 198 */
+    margin: 5px 15px 15px 5px; /* 199 */
+    
+    background-color: #8c00ff;
+    
+    object-fit: contain;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    width: fit-content;
+    border-width: 1px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .project-item p {
-    font-size: 0.7em; /* 197 */
+    font-size: 1em; /* 197 */
     color: #ffffffc8; /* 198 */
     margin: 0 15px 15px 15px; /* 199 */
     line-height: 1.5; /* 200 */
