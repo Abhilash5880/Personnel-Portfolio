@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalProjectFeatures.appendChild(li);
                 });
 
-                modalProjectChallenges.innerHTML = '';
+                modalProjectChallenges.innerHTML = project.challenges;
                 project.challenges.forEach(challenge => {
                     const li = document.createElement('li');
                     li.innerHTML = challenge;
