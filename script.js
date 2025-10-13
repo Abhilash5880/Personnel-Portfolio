@@ -302,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProjectMainImage = document.getElementById('modal-project-main-image');
     const modalProjectProblem = document.getElementById('modal-project-problem');
     const modalProjectFeatures = document.getElementById('modal-project-features');
+    const modalProjectChallenges = document.getElementById('modal-project-challenges');
     const modalProjectLinks = document.getElementById('modal-project-links');
 
     // 2. Define your project data
@@ -310,16 +311,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectsData = [
         {
             id: 'netflix-show-recap', // Unique ID for this project
-            title: 'NETFLIX Show Recap',
-            subtitle: 'AI-Powered Episode Summaries',
+            title: 'NETFLIX Show Recap 📽️',
+            subtitle: 'This is a simple <b>Chrome Extension</b> that enhances your Netflix viewing experience by providing <b>AI-generated recaps for TV show directly into your browser</b>.',
             mainImage: 'images/Gemini_Generated_Image_20meqs20meqs20me.png',
-            problem: 'Have you ever been watching a TV show on Netflix, but left it halfway through and when you came after a few weeks or even months, you realize you\'ve completely forgotten what happened in the last episode? You\'re faced with a dilemma: do you try to remember and risk being lost, or do you rewind and re-watch, wasting precious time? This project solves that exact problem. It\'s a Chrome extension that provides a quick, AI-generated summary of a TV show episode right in your browser. With a single click, you get a brief recap of the key plot points, refreshing your memory so you can jump straight into the next episode without missing a beat. It\'s the perfect solution for binge-watchers and casual viewers who want to stay on top of the story without the hassle of re-watching.',
+            problem: 'Have you ever been watching a TV show on Netflix, but left it halfway through and when you came after a few weeks or even months, you realize you\'ve completely forgotten what happened in the last episode? You\'re faced with a dilemma: do you try to remember and risk being lost, or do you rewind and re-watch, wasting precious time? <br></br>This project solves that exact problem. It\'s a Chrome extension that provides a quick, AI-generated summary of a TV show episode right in your browser. With a single click, you get a brief recap of the key plot points, refreshing your memory so you can jump straight into the next episode without missing a beat. It\'s the perfect solution for binge-watchers and casual viewers who want to stay on top of the story without the hassle of re-watching.',
             features: [
-                'Intelligent Episode Detection: Automatically identifies the show, season, and episode you are currently watching on Netflix.',
-                'AI-Powered Summaries: Utilizes a powerful Hugging Face model to generate brief, relevant recaps of events leading up to the current episode.',
-                'Quick Memory Refresh: Get 3-4 bullet points summarizing previous events, perfect for reminding yourself of the plot without spoilers.',
-                'Seamless Integration: Designed to work directly within your Netflix browser tab.'
+                "<b>Intelligent Episode Detection :</b> Automatically identifies the show, season, and episode you are currently watching on Netflix. (for now only works with NETFLIX on particular show's title page, will add more integrations later on)",
+                '<b>AI-Powered Summaries</b>: Utilizes a powerful Hugging Face model to generate brief, relevant recaps of events leading up to the current episode.',
+                '<b>Quick Memory Refresh :</b> Get 3-4 bullet points summarizing previous events, perfect for reminding yourself of the plot without spoilers.',
+                '<b>Seamless Integration :</b> Designed to work directly within your Netflix browser tab.'
             ],
+
+            challenges:["<b>Finding the right AI model : </b>Initially, I planned on Gemini and ChatGPT for generating results but after continuous failures I realized they were paid. However, to maintain an open-source and cost-effective approach, the focus shifted to finding a suitable free model. <br></br>This led to a search on <b>Hugging Face, a platform known for hosting a vast collection of accessible AI models for various purposes which can also be trained on different datasets</b> During model testing. An initial model, <b>zai-org/GLM-4.5</b>, while capable, would often include a verbose 'thinking' process in its output. It would start with an internal thought process like 'Thought: The user wants a summary of...' before providing the actual summary. This unnecessary text was not suitable for a user-facing application. <br></br>The issue was resolved by switching to a more suitable model, <b>Qwen/Qwen3-Coder-480B-A35B-Instruct</b>, which produced a clean, direct response without the extraneous conversational filler. The AI model finally chosen for its ability to follow instructions and generate accurate, concise recaps quickly.<br></br>",
+                        "<li><b>Secure API Key Management:</b> Encountered lots of errors when attempting to <b>push a hard-coded API key to GitHub</b>. The solution involved <b>moving the key to a separate config.js file and adding that file to .gitignore</b> to prevent it from being exposed in the public repository.",],
             links: {
                 github: 'https://github.com/Abhilash5880/NETFLIX-Show-recaps', // Replace with actual link
                 live: 'https://youtu.be/VsDYHcxCVxQ' // Replace with actual link if deployed
@@ -332,12 +336,18 @@ document.addEventListener('DOMContentLoaded', () => {
             mainImage: 'images/Screenshot 2025-10-06 182300.png',
             problem: 'In today\'s competitive professional landscape, having a strong online presence is essential. A static resume often fails to capture the full scope of a person\'s skills, projects, and personality. This project aims to solve that by providing a dynamic, engaging, and easily accessible online portfolio that serves as an enhanced resume, allowing individuals to showcase their work, achievements, and unique abilities in a visually compelling manner.',
             features: [
-                'Responsive Design: Ensures the portfolio looks great and functions perfectly on all devices, from desktops to mobile phones.',
+                'Responsive Design: <b>Ensures the portfolio looks</b> great and functions perfectly on all devices, from desktops to mobile phones.',
                 'Project Showcase: Dedicated sections to display projects with images, descriptions, and links to live demos or repositories.',
                 'About Me Section: A personal introduction detailing skills, experience, and passions.',
                 'Contact Form: Easy way for potential employers or collaborators to get in touch.',
                 'Customizable Layout: Built with modular components for easy modification and personalization.'
             ],
+
+            challenges:['Responsive Design: <b>Ensures the portfolio looks</b> great and functions perfectly on all devices, from desktops to mobile phones.',
+                'Project Showcase: Dedicated sections to display projects with images, descriptions, and links to live demos or repositories.',
+                'About Me Section: A personal introduction detailing skills, experience, and passions.',
+                'Contact Form: Easy way for potential employers or collaborators to get in touch.',
+                'Customizable Layout: Built with modular components for easy modification and personalization.'],
             links: {
                 github: 'https://github.com/Abhilash5880/Personnel-Portfolio', // Replace with actual link
                 live: 'https://abhilash5880.github.io/Personnel-Portfolio/' // Replace with actual link if deployed
@@ -368,20 +378,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (project) {
                 // Populate the modal with project data
-                modalProjectTitle.textContent = project.title;
-                modalProjectSubtitle.textContent = project.subtitle;
+                modalProjectTitle.innerHTML = project.title;
+                modalProjectSubtitle.innerHTML = project.subtitle;
                 modalProjectMainImage.src = project.mainImage;
                 modalProjectMainImage.alt = project.title; // Set alt text for accessibility
-                modalProjectProblem.textContent = project.problem;
+                modalProjectProblem.innerHTML = project.problem;
 
                 // Clear existing features and add new ones
                 modalProjectFeatures.innerHTML = '';
                 project.features.forEach(feature => {
                     const li = document.createElement('li');
-                    li.textContent = feature;
+                    li.innerHTML = feature;
                     modalProjectFeatures.appendChild(li);
                 });
 
+                modalProjectChallenges.innerHTML = '';
+                project.challenges.forEach(challenge => {
+                    const li = document.createElement('li');
+                    li.innerHTML = challenge;
+                    modalProjectChallenges.appendChild(li);
+                });
+                
+                
                 // Clear existing links and add new ones
                 modalProjectLinks.innerHTML = '';
                 if (project.links.github) {
@@ -389,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     githubLink.href = project.links.github;
                     githubLink.target = '_blank';
                     githubLink.classList.add('project-link-button', 'github-link');
-                    githubLink.textContent = 'GitHub Repo';
+                    githubLink.innerHTML = 'GitHub Repo';
                     modalProjectLinks.appendChild(githubLink);
                 }
                 if (project.links.live) {
@@ -397,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     liveLink.href = project.links.live;
                     liveLink.target = '_blank';
                     liveLink.classList.add('project-link-button', 'live-link');
-                    liveLink.textContent = 'Live Demo';
+                    liveLink.innerHTML = 'Live Demo';
                     modalProjectLinks.appendChild(liveLink);
                 }
 
@@ -467,86 +485,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-     // function to calculate grid and rows for varying image sizes
-    /*function applyMasonryLayout() {
-        const galleryItems = document.querySelectorAll('.project-grid');
-        if (!galleryItems.length) return;
-
-        const filterableGalleryGrid = document.getElementById('project-gallery-grid');
-        let gridAutoRowsValue = parseFloat(getComputedStyle(filterableGalleryGrid).gridAutoRows);
-
-        if (isNaN(gridAutoRowsValue) || gridAutoRowsValue <= 0) {
-            gridAutoRowsValue = 1;
-            console.warn('gridAutoRowsValue was invalid or zero, defaulting to 1 for span calculation.');
-        }
-        console.log('gridAutoRowsValue (after validation):', gridAutoRowsValue);
-
-        galleryItems.forEach(item => {
-            if (item.style.display === 'none') {
-                item.style.gridRowEnd = '';
-                return;
-            }
-
-            const image = item.querySelector('img');
-            const iframe = item.querySelector('iframe'); // Check for an iframe
-
-            // Define common elements for both images and videos
-            const h3 = item.querySelector('h3');
-            const p = item.querySelector('p');
-            const h3Height = h3 ? h3.offsetHeight : 0;
-            const pHeight = p ? p.offsetHeight : 0;
-            // You can adjust this padding value if your CSS changes
-            const estimatedVerticalPadding = 15 + 15 + 5 + 15;
-
-            // This helper function will handle the final calculation and application
-            const updateRowSpan = (contentHeight, contentName) => {
-                const finalItemHeight = contentHeight + h3Height + pHeight + estimatedVerticalPadding;
-                let rowSpan = Math.ceil(finalItemHeight / gridAutoRowsValue);
-
-                if (isNaN(rowSpan) || rowSpan <= 0) {
-                    rowSpan = 1;
-                    console.error(`Calculated rowSpan for ${contentName} is invalid (${rowSpan}), defaulting to 1.`);
-                }
-                
-                item.style.gridRowEnd = `span ${rowSpan}`;
-                console.log(`Updated rowSpan for ${contentName} to ${rowSpan}`);
-            };
-
-            if (image) {
-                // Logic for image items
-                const imgSrc = image.src.split('/').pop();
-                console.log(`--- Debugging for ${imgSrc} ---`);
-
-                if (image.complete && image.naturalHeight !== 0) {
-                    updateRowSpan(image.clientHeight, imgSrc);
-                } else {
-                    image.addEventListener('load', () => updateRowSpan(image.clientHeight, imgSrc), { once: true });
-                }
-            } else if (iframe) {
-                // Logic for video items (if no image is found)
-                const iframeSrc = iframe.src.split('/').pop();
-                console.log(`--- Debugging for iframe ${iframeSrc} ---`);
-                
-                // Get the height from the iframe. The CSS will ensure this is the correct aspect ratio.
-                const videoHeight = iframe.clientHeight;
-                
-                if (videoHeight > 0) {
-                    updateRowSpan(videoHeight, iframeSrc);
-                } else {
-                    // Fallback if clientHeight is 0 (this shouldn't happen with the new CSS)
-                    console.warn(`iframe ${iframeSrc} has 0 height, using a default value.`);
-                    updateRowSpan(315, iframeSrc + " (fallback)"); // Using default YouTube height
-                }
-            } else {
-                // Fallback for items with no image or iframe
-                console.warn('Gallery item has no image or iframe, using a default height.');
-                updateRowSpan(200, "Unknown Item (fallback)");
-            }
-        });
-    }*/
-})
+});innerHTML

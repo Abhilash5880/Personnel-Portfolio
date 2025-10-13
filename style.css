@@ -662,9 +662,7 @@ header nav ul li a.active {
                 position 0.5s, 
                 z-index 0.5s;
     
-}
-
-}
+}}
 
 /* --- Video Aspect Ratio Fix --- */
 .project-item iframe {
@@ -701,13 +699,7 @@ header nav ul li a.active {
     margin: 15px 15px 15px 15px; /* 195 */
     color: #f1f1f1; /* 196 */
 }
-.project-item h3:hover 
-{
-    transition: transform 0.3s ease, color 0.3s ease;
-    font-size: 1.3em; /* 194 */
-    margin: 15px 15px 5px 15px; /* 195 */
-    
-}
+
 .project-item p1 {
     font-size: 0.8em; /* 197 */
     color: #ffffff; /* 198 */
