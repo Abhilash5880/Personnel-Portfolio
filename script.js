@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 '<b>Customizable Layout:</b> Built with modular components for easy modification and personalization.'
             ],
 
-            challenges:['<b>Gallery Grid Masonry Effect:</b> The JavaScript for calculating grid-row-end for the <b>Masonry-like layout like pinterest</b> can sometimes result in <b>NaN errors</b> in the console, leading to inconsistent item sizing and spacing.<br></br>',
+            challenges:['<b>Gallery Grid Masonry Effect:</b> The JavaScript for calculating grid-row-end for the <b>Masonry-like layout like Pinterest</b> can sometimes result in <b>NaN errors</b> in the console, leading to inconsistent item sizing and spacing.<br></br>',
                 '<b>Fine Tuning for different screen size:</b> Used <b>CSS media queries</b> to change sizes and alignment to make the website look good on all screen sizes',
                 ],
             links: {
