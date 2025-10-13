@@ -392,12 +392,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalProjectFeatures.appendChild(li);
                 });
 
-                modalProjectChallenges.innerHTML = project.challenges;
-                project.challenges.forEach(challenge => {
-                    const li = document.createElement('li');
-                    li.innerHTML = challenge;
-                    modalProjectChallenges.appendChild(li);
-                });
+                modalProjectChallenges.innerHTML = '';
+                if (project.challenges && project.challenges.length > 0) {
+                    const ul = document.createElement('ul'); // Create an unordered list element
+    
+                     project.challenges.forEach(challenge => {
+                        const li = document.createElement('li');
+                             // Use innerHTML to allow bold tags/formatting inside the challenge string
+                        li.innerHTML = challenge; 
+                        ul.appendChild(li);
+                    });
+    
+                    modalProjectChallenges.appendChild(ul); // Append the whole list to the modal section
+} 
                 
                 
                 // Clear existing links and add new ones
