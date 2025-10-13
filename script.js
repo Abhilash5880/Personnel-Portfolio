@@ -321,8 +321,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Seamless Integration: Designed to work directly within your Netflix browser tab.'
             ],
             links: {
-                github: 'https://github.com/your-github-repo-for-netflix-recap', // Replace with actual link
-                live: 'https://chrome.google.com/webstore/detail/netflix-show-recap/your-extension-id' // Replace with actual link if deployed
+                github: 'https://github.com/Abhilash5880/NETFLIX-Show-recaps', // Replace with actual link
+                live: 'https://youtu.be/VsDYHcxCVxQ' // Replace with actual link if deployed
             }
         },
         {
@@ -339,8 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Customizable Layout: Built with modular components for easy modification and personalization.'
             ],
             links: {
-                github: 'https://github.com/Abhilash5880/Artwork-Portfolio', // Replace with actual link
-                live: 'https://www.yourpersonalsite.com' // Replace with actual link if deployed
+                github: 'https://github.com/Abhilash5880/Personnel-Portfolio', // Replace with actual link
+                live: 'https://abhilash5880.github.io/Personnel-Portfolio/' // Replace with actual link if deployed
             }
         }
         // Add more project objects here as needed

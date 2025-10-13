@@ -594,8 +594,36 @@ header nav ul li a.active {
     }
 }
 
-@media (min-width:768)
+@media (min-width:768px)
 {
+    .project-media-gallery img:hover {
+    /*width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    
+    margin-bottom: 15px;
+    max-width:fit-content;*/
+    /* A. Positioning and Layering */
+    position: relative; /* Takes the image out of the document flow and keeps it relative to the viewport */
+    top:5%;          /* Aligns top edge with the viewport's top edge */
+    left: 0;         /* Aligns left edge with the viewport's left edge */
+    right:3%;
+    z-index: 9999;   /* Brings the image far to the front, above all other elements */
+    
+    /* B. Sizing */
+    width: 90vw;    /* Sets the width to 100% of the Viewport Width */
+    height: 90vh;   /* Sets the height to 100% of the Viewport Height */
+    
+    /* C. Image Scaling */
+    object-fit: contain; /* Ensures the whole image is visible (letterboxing if needed) */
+    /* OR: object-fit: cover; for a background-like effect (some cropping may occur) */
+
+    /* D. Re-setting the transition to happen immediately upon hover */
+     /* Reset any previous transform, not strictly necessary but good practice */
+    transition: transform 0.5s ease-in-out, 
+                position 0.5s, 
+                z-index 0.5s;
+}
 
 }
 
@@ -737,6 +765,7 @@ header nav ul li a.active {
     object-fit: cover;
     margin-bottom: 15px;
 }
+
 
 /* Detail Headings */
 .details-heading {
