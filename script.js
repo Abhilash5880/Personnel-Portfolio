@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 'personnel-portfolio', // Unique ID for this project
-            title: 'Personnel Portfolio',
+            title: 'Pixel & Pigments',
             subtitle: 'Online Resume Website',
             mainImage: 'images/Screenshot 2025-10-06 182300.png',
             problem: 'In today\'s competitive professional landscape, having a strong online presence is essential. A static resume often fails to capture the full scope of a person\'s skills, projects, and personality. This project aims to solve that by providing a dynamic, engaging, and easily accessible online portfolio that serves as an enhanced resume, allowing individuals to showcase their work, achievements, and unique abilities in a visually compelling manner.',
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let projectId = '';
             if (projectTitle === 'NETFLIX Show Recap') {
                 projectId = 'netflix-show-recap';
-            } else if (projectTitle === 'Personnel Portfolio') {
+            } else if (projectTitle === 'Pixel & Pigments') {
                 projectId = 'personnel-portfolio';
             }
             // Ideally, your HTML project-items would have a data-id attribute:

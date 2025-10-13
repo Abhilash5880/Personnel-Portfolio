@@ -570,7 +570,7 @@ header nav ul li a.active {
 /*--individual project item style--*/
 .project-item {
     background-color: #202020;
-    border-radius:8px;
+    
     /*overflow: hidden;/*Hides any content that spills outside the rounded corners,
     especially useful for images.*/
     box-shadow: 0 4px 15px  rgba(69, 69, 69, 0.1);
@@ -581,6 +581,7 @@ header nav ul li a.active {
     flex-wrap:inherit;/*Allows filter buttons to wrap to the next line on smaller screens.*/
     padding: 4%;
     margin-inline: 2%;
+    
 
 }
 
@@ -613,16 +614,33 @@ header nav ul li a.active {
 
 
 .project-item:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Default transition for non-hover state */
     transform: translateY(-8px);/*adds animation*/
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 30px rgba(157, 0, 255, 0.47);
     /*shadow increases when hovering*/
+    
+    transition: transform 0.3s ease, border-color 0.3s ease; /* <-- FIXED LINE 622 */
+    border-radius:8px;
+    border-style: solid;
+    border-color: #8529ff; /* Assuming you want a black border on hover, but this color should be set */
+    
+    
+
+    
 }
+
 .project-item h3 {
     font-size: 1.3em; /* 194 */
     margin: 15px 15px 5px 15px; /* 195 */
     color: #c7c7c7; /* 196 */
 }
-
+.project-item h3:hover 
+{
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 1.3em; /* 194 */
+    margin: 15px 15px 5px 15px; /* 195 */
+    
+}
 .project-item p {
     font-size: 0.7em; /* 197 */
     color: #ffffffc8; /* 198 */
@@ -652,10 +670,11 @@ header nav ul li a.active {
     padding: 20px;
     border-radius: 10px;
     width: 90%; /* Default width for medium screens */
-    max-width: 900px; /* Maximum width */
+    max-width:fit-content; /* Maximum width */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     position: relative;
     animation: slideIn 0.3s ease-out; /* Simple entry animation */
+    color: #333;
 }
 
 /* Animation for smooth appearance */
