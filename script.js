@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'netflix-show-recap', // Unique ID for this project
             title: 'NETFLIX Show Recap 📽️',
             subtitle: 'This is a simple <b>Chrome Extension</b> that enhances your Netflix viewing experience by providing <b>AI-generated recaps for TV show directly into your browser</b>.',
-            mainImage: 'images/Gemini_Generated_Image_20meqs20meqs20me.png',
+            mainImage: 'images/4ebcc3b1-4507-4244-864f-929e85447aaa.png',
             problem: 'Have you ever been watching a TV show on Netflix, but left it halfway through and when you came after a few weeks or even months, you realize you\'ve completely forgotten what happened in the last episode? You\'re faced with a dilemma: do you try to remember and risk being lost, or do you rewind and re-watch, wasting precious time? <br></br>This project solves that exact problem. It\'s a Chrome extension that provides a quick, AI-generated summary of a TV show episode right in your browser. With a single click, you get a brief recap of the key plot points, refreshing your memory so you can jump straight into the next episode without missing a beat. It\'s the perfect solution for binge-watchers and casual viewers who want to stay on top of the story without the hassle of re-watching.',
             features: [
                 "<b>Intelligent Episode Detection :</b> Automatically identifies the show, season, and episode you are currently watching on Netflix. (for now only works with NETFLIX on particular show's title page, will add more integrations later on)",
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
 
             challenges:["<b>Finding the right AI model : </b>Initially, I planned on Gemini and ChatGPT for generating results but after continuous failures I realized they were paid. However, to maintain an open-source and cost-effective approach, the focus shifted to finding a suitable free model. <br></br>This led to a search on <b>Hugging Face, a platform known for hosting a vast collection of accessible AI models for various purposes which can also be trained on different datasets</b> During model testing. An initial model, <b>zai-org/GLM-4.5</b>, while capable, would often include a verbose 'thinking' process in its output. It would start with an internal thought process like 'Thought: The user wants a summary of...' before providing the actual summary. This unnecessary text was not suitable for a user-facing application. <br></br>The issue was resolved by switching to a more suitable model, <b>Qwen/Qwen3-Coder-480B-A35B-Instruct</b>, which produced a clean, direct response without the extraneous conversational filler. The AI model finally chosen for its ability to follow instructions and generate accurate, concise recaps quickly.<br></br>",
-                        "<li><b>Secure API Key Management:</b> Encountered lots of errors when attempting to <b>push a hard-coded API key to GitHub</b>. The solution involved <b>moving the key to a separate config.js file and adding that file to .gitignore</b> to prevent it from being exposed in the public repository.",],
+                        "<b>Secure API Key Management:</b> Encountered lots of errors when attempting to <b>push a hard-coded API key to GitHub</b>. The solution involved <b>moving the key to a separate config.js file and adding that file to .gitignore</b> to prevent it from being exposed in the public repository.",],
             links: {
                 github: 'https://github.com/Abhilash5880/NETFLIX-Show-recaps', // Replace with actual link
                 live: 'https://youtu.be/VsDYHcxCVxQ' // Replace with actual link if deployed
@@ -332,22 +332,20 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'personnel-portfolio', // Unique ID for this project
             title: 'Pixel & Pigments',
-            subtitle: 'Online Resume Website',
+            subtitle: 'A responsive, and interactive web portfolio showcasing a collection of digital art and creative expressions; designed to act as an online resume/portfolio',
             mainImage: 'images/Screenshot 2025-10-06 182300.png',
             problem: 'In today\'s competitive professional landscape, having a strong online presence is essential. A static resume often fails to capture the full scope of a person\'s skills, projects, and personality. This project aims to solve that by providing a dynamic, engaging, and easily accessible online portfolio that serves as an enhanced resume, allowing individuals to showcase their work, achievements, and unique abilities in a visually compelling manner.',
             features: [
-                'Responsive Design: <b>Ensures the portfolio looks</b> great and functions perfectly on all devices, from desktops to mobile phones.',
-                'Project Showcase: Dedicated sections to display projects with images, descriptions, and links to live demos or repositories.',
-                'About Me Section: A personal introduction detailing skills, experience, and passions.',
-                'Contact Form: Easy way for potential employers or collaborators to get in touch.',
-                'Customizable Layout: Built with modular components for easy modification and personalization.'
+                '<b>Responsive Design: </b>Ensures the portfolio looks great and functions perfectly on all devices, from desktops to mobile phones.',
+                '<b>Project Showcase :</b> Dedicated sections to display projects with images, descriptions, and links to live demos or repositories.',
+                '<b>A dedicated projects section:</b> To showcase all personnel projects under different tech. stacks with a clean pop-up modal for each project attached with respective information and links.',
+                '<b>Contact Form :</b> Easy way for potential employers or collaborators to get in touch.',
+                '<b>Customizable Layout:</b> Built with modular components for easy modification and personalization.'
             ],
 
-            challenges:['Responsive Design: <b>Ensures the portfolio looks</b> great and functions perfectly on all devices, from desktops to mobile phones.',
-                'Project Showcase: Dedicated sections to display projects with images, descriptions, and links to live demos or repositories.',
-                'About Me Section: A personal introduction detailing skills, experience, and passions.',
-                'Contact Form: Easy way for potential employers or collaborators to get in touch.',
-                'Customizable Layout: Built with modular components for easy modification and personalization.'],
+            challenges:['<b>Gallery Grid Masonry Effect:</b> The JavaScript for calculating grid-row-end for the <b>Masonry-like layout like pinterest</b> can sometimes result in <b>NaN errors</b> in the console, leading to inconsistent item sizing and spacing.<br></br>',
+                '<b>Fine Tuning for different screen size:</b> Used <b>CSS media queries</b> to change sizes and alignment to make the website look good on all screen sizes',
+                ],
             links: {
                 github: 'https://github.com/Abhilash5880/Personnel-Portfolio', // Replace with actual link
                 live: 'https://abhilash5880.github.io/Personnel-Portfolio/' // Replace with actual link if deployed
@@ -403,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ul.appendChild(li);
                     });
     
-                    modalProjectChallenges.appendChild(ul); // Append the whole list to the modal section
+                modalProjectChallenges.appendChild(ul); // Append the whole list to the modal section
 } 
                 
                 
