@@ -262,3 +262,291 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Existing Image Modal Logic (Assuming it's similar to this) ---
+    const imageModal = document.getElementById('image-modal');
+    const modalImage = document.querySelector('.modal-image');
+    const closeImageButton = imageModal.querySelector('.close-button');
+    const galleryItems = document.querySelectorAll('.gallery-item img'); // Select images within gallery-item
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            modalImage.src = item.src;
+            imageModal.style.display = 'block';
+        });
+    });
+
+    if (closeImageButton) {
+        closeImageButton.addEventListener('click', () => {
+            imageModal.style.display = 'none';
+        });
+    }
+
+    // Close image modal when clicking outside the image
+    imageModal.addEventListener('click', (event) => {
+        if (event.target === imageModal) {
+            imageModal.style.display = 'none';
+        }
+    });
+
+    // --- NEW Project Modal Logic ---
+
+    // 1. Select DOM elements for the new project modal
+    const projectModal = document.getElementById('project-modal');
+    const closeProjectButton = projectModal.querySelector('.close-button-rich');
+
+    const modalProjectTitle = document.getElementById('modal-project-title');
+    const modalProjectSubtitle = document.getElementById('modal-project-subtitle');
+    const modalProjectMainImage = document.getElementById('modal-project-main-image');
+    const modalProjectProblem = document.getElementById('modal-project-problem');
+    const modalProjectFeatures = document.getElementById('modal-project-features');
+    const modalProjectLinks = document.getElementById('modal-project-links');
+
+    // 2. Define your project data
+    //    Each object in this array corresponds to a project-item in your HTML
+    //    The 'id' here should be unique and can be matched with a data-id attribute on your HTML project-item
+    const projectsData = [
+        {
+            id: 'netflix-show-recap', // Unique ID for this project
+            title: 'NETFLIX Show Recap',
+            subtitle: 'AI-Powered Episode Summaries',
+            mainImage: 'images/Gemini_Generated_Image_20meqs20meqs20me.png',
+            problem: 'Have you ever been watching a TV show on Netflix, but left it halfway through and when you came after a few weeks or even months, you realize you\'ve completely forgotten what happened in the last episode? You\'re faced with a dilemma: do you try to remember and risk being lost, or do you rewind and re-watch, wasting precious time? This project solves that exact problem. It\'s a Chrome extension that provides a quick, AI-generated summary of a TV show episode right in your browser. With a single click, you get a brief recap of the key plot points, refreshing your memory so you can jump straight into the next episode without missing a beat. It\'s the perfect solution for binge-watchers and casual viewers who want to stay on top of the story without the hassle of re-watching.',
+            features: [
+                'Intelligent Episode Detection: Automatically identifies the show, season, and episode you are currently watching on Netflix.',
+                'AI-Powered Summaries: Utilizes a powerful Hugging Face model to generate brief, relevant recaps of events leading up to the current episode.',
+                'Quick Memory Refresh: Get 3-4 bullet points summarizing previous events, perfect for reminding yourself of the plot without spoilers.',
+                'Seamless Integration: Designed to work directly within your Netflix browser tab.'
+            ],
+            links: {
+                github: 'https://github.com/your-github-repo-for-netflix-recap', // Replace with actual link
+                live: 'https://chrome.google.com/webstore/detail/netflix-show-recap/your-extension-id' // Replace with actual link if deployed
+            }
+        },
+        {
+            id: 'personnel-portfolio', // Unique ID for this project
+            title: 'Personnel Portfolio',
+            subtitle: 'Online Resume Website',
+            mainImage: 'images/Screenshot 2025-10-06 182300.png',
+            problem: 'In today\'s competitive professional landscape, having a strong online presence is essential. A static resume often fails to capture the full scope of a person\'s skills, projects, and personality. This project aims to solve that by providing a dynamic, engaging, and easily accessible online portfolio that serves as an enhanced resume, allowing individuals to showcase their work, achievements, and unique abilities in a visually compelling manner.',
+            features: [
+                'Responsive Design: Ensures the portfolio looks great and functions perfectly on all devices, from desktops to mobile phones.',
+                'Project Showcase: Dedicated sections to display projects with images, descriptions, and links to live demos or repositories.',
+                'About Me Section: A personal introduction detailing skills, experience, and passions.',
+                'Contact Form: Easy way for potential employers or collaborators to get in touch.',
+                'Customizable Layout: Built with modular components for easy modification and personalization.'
+            ],
+            links: {
+                github: 'https://github.com/Abhilash5880/Artwork-Portfolio', // Replace with actual link
+                live: 'https://www.yourpersonalsite.com' // Replace with actual link if deployed
+            }
+        }
+        // Add more project objects here as needed
+    ];
+
+    // 3. Add event listeners to your new .project-item elements
+    const projectItems = document.querySelectorAll('.project-item');
+
+    projectItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Get the project ID from a data attribute (you'll need to add this to your HTML project-items)
+            // For now, we'll try to guess based on the title, or you can manually set it
+            const projectTitle = item.querySelector('h3').textContent;
+            let projectId = '';
+            if (projectTitle === 'NETFLIX Show Recap') {
+                projectId = 'netflix-show-recap';
+            } else if (projectTitle === 'Personnel Portfolio') {
+                projectId = 'personnel-portfolio';
+            }
+            // Ideally, your HTML project-items would have a data-id attribute:
+            // <div class="project-item" data-id="netflix-show-recap">...</div>
+            // Then you'd do: const projectId = item.dataset.id;
+
+            const project = projectsData.find(p => p.id === projectId);
+
+            if (project) {
+                // Populate the modal with project data
+                modalProjectTitle.textContent = project.title;
+                modalProjectSubtitle.textContent = project.subtitle;
+                modalProjectMainImage.src = project.mainImage;
+                modalProjectMainImage.alt = project.title; // Set alt text for accessibility
+                modalProjectProblem.textContent = project.problem;
+
+                // Clear existing features and add new ones
+                modalProjectFeatures.innerHTML = '';
+                project.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    modalProjectFeatures.appendChild(li);
+                });
+
+                // Clear existing links and add new ones
+                modalProjectLinks.innerHTML = '';
+                if (project.links.github) {
+                    const githubLink = document.createElement('a');
+                    githubLink.href = project.links.github;
+                    githubLink.target = '_blank';
+                    githubLink.classList.add('project-link-button', 'github-link');
+                    githubLink.textContent = 'GitHub Repo';
+                    modalProjectLinks.appendChild(githubLink);
+                }
+                if (project.links.live) {
+                    const liveLink = document.createElement('a');
+                    liveLink.href = project.links.live;
+                    liveLink.target = '_blank';
+                    liveLink.classList.add('project-link-button', 'live-link');
+                    liveLink.textContent = 'Live Demo';
+                    modalProjectLinks.appendChild(liveLink);
+                }
+
+                // Show the modal
+                projectModal.style.display = 'block';
+            } else {
+                console.error(`Project data not found for ID: ${projectId}`);
+            }
+        });
+    });
+
+    // 4. Add event listeners to close the project modal
+    if (closeProjectButton) {
+        closeProjectButton.addEventListener('click', () => {
+            projectModal.style.display = 'none';
+        });
+    }
+
+    // Close project modal when clicking outside the content area
+    projectModal.addEventListener('click', (event) => {
+        // Check if the click occurred directly on the modal background, not its content
+        if (event.target === projectModal) {
+            projectModal.style.display = 'none';
+        }
+    });
+
+    // --- Footer Year Update (assuming you have this) ---
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+
+    // --- Home Button Smooth Scroll (assuming you have this) ---
+    const homeButton = document.getElementById('home-button-trigger');
+    if (homeButton) {
+        homeButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = homeButton.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // --- Filter Buttons (assuming you have this for your gallery) ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterableGalleryGrid = document.getElementById('filterable-gallery-grid');
+    const galleryItemsActual = filterableGalleryGrid ? filterableGalleryGrid.querySelectorAll('.gallery-item') : [];
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'active' from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add 'active' to the clicked button
+            button.classList.add('active');
+
+            const category = button.dataset.category;
+
+            galleryItemsActual.forEach(item => {
+                const itemCategory = item.dataset.category;
+                if (category === 'all' || itemCategory === category) {
+                    item.style.display = 'block'; // Show item
+                } else {
+                    item.style.display = 'none'; // Hide item
+                }
+            });
+        });
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+     // function to calculate grid and rows for varying image sizes
+    /*function applyMasonryLayout() {
+        const galleryItems = document.querySelectorAll('.project-grid');
+        if (!galleryItems.length) return;
+
+        const filterableGalleryGrid = document.getElementById('project-gallery-grid');
+        let gridAutoRowsValue = parseFloat(getComputedStyle(filterableGalleryGrid).gridAutoRows);
+
+        if (isNaN(gridAutoRowsValue) || gridAutoRowsValue <= 0) {
+            gridAutoRowsValue = 1;
+            console.warn('gridAutoRowsValue was invalid or zero, defaulting to 1 for span calculation.');
+        }
+        console.log('gridAutoRowsValue (after validation):', gridAutoRowsValue);
+
+        galleryItems.forEach(item => {
+            if (item.style.display === 'none') {
+                item.style.gridRowEnd = '';
+                return;
+            }
+
+            const image = item.querySelector('img');
+            const iframe = item.querySelector('iframe'); // Check for an iframe
+
+            // Define common elements for both images and videos
+            const h3 = item.querySelector('h3');
+            const p = item.querySelector('p');
+            const h3Height = h3 ? h3.offsetHeight : 0;
+            const pHeight = p ? p.offsetHeight : 0;
+            // You can adjust this padding value if your CSS changes
+            const estimatedVerticalPadding = 15 + 15 + 5 + 15;
+
+            // This helper function will handle the final calculation and application
+            const updateRowSpan = (contentHeight, contentName) => {
+                const finalItemHeight = contentHeight + h3Height + pHeight + estimatedVerticalPadding;
+                let rowSpan = Math.ceil(finalItemHeight / gridAutoRowsValue);
+
+                if (isNaN(rowSpan) || rowSpan <= 0) {
+                    rowSpan = 1;
+                    console.error(`Calculated rowSpan for ${contentName} is invalid (${rowSpan}), defaulting to 1.`);
+                }
+                
+                item.style.gridRowEnd = `span ${rowSpan}`;
+                console.log(`Updated rowSpan for ${contentName} to ${rowSpan}`);
+            };
+
+            if (image) {
+                // Logic for image items
+                const imgSrc = image.src.split('/').pop();
+                console.log(`--- Debugging for ${imgSrc} ---`);
+
+                if (image.complete && image.naturalHeight !== 0) {
+                    updateRowSpan(image.clientHeight, imgSrc);
+                } else {
+                    image.addEventListener('load', () => updateRowSpan(image.clientHeight, imgSrc), { once: true });
+                }
+            } else if (iframe) {
+                // Logic for video items (if no image is found)
+                const iframeSrc = iframe.src.split('/').pop();
+                console.log(`--- Debugging for iframe ${iframeSrc} ---`);
+                
+                // Get the height from the iframe. The CSS will ensure this is the correct aspect ratio.
+                const videoHeight = iframe.clientHeight;
+                
+                if (videoHeight > 0) {
+                    updateRowSpan(videoHeight, iframeSrc);
+                } else {
+                    // Fallback if clientHeight is 0 (this shouldn't happen with the new CSS)
+                    console.warn(`iframe ${iframeSrc} has 0 height, using a default value.`);
+                    updateRowSpan(315, iframeSrc + " (fallback)"); // Using default YouTube height
+                }
+            } else {
+                // Fallback for items with no image or iframe
+                console.warn('Gallery item has no image or iframe, using a default height.');
+                updateRowSpan(200, "Unknown Item (fallback)");
+            }
+        });
+    }*/
+})

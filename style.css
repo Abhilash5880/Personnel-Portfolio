@@ -458,6 +458,7 @@ header nav ul li a.active {
     line-height: 1.4;
 }
 
+
 /*---Gallery section styles---*/
 .gallery-section {
     padding: 40px;
@@ -518,6 +519,8 @@ header nav ul li a.active {
     grid-auto-rows:1px; /* This is the key. Make auto-rows only as tall as their content. */
 }
 
+
+
 /*--individual gallery item style--*/
 .gallery-item {
     background-color: #202020;
@@ -563,6 +566,251 @@ header nav ul li a.active {
     margin: 0 15px 15px 15px; /* 199 */
     line-height: 1.5; /* 200 */
 }
+
+/*--individual project item style--*/
+.project-item {
+    background-color: #202020;
+    border-radius:8px;
+    /*overflow: hidden;/*Hides any content that spills outside the rounded corners,
+    especially useful for images.*/
+    box-shadow: 0 4px 15px  rgba(69, 69, 69, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align:center;
+    padding-bottom: 10px;
+    display:inline-table;
+    flex-wrap:inherit;/*Allows filter buttons to wrap to the next line on smaller screens.*/
+    padding: 4%;
+    margin-inline: 2%;
+
+}
+
+@media(max-width:480px)
+{
+    .project-item{
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
+
+@media (min-width:768)
+{
+
+}
+
+/* --- Video Aspect Ratio Fix --- */
+.project-item iframe {
+    width:min-content;
+    /* The height will be handled by the aspect ratio calculation, not a fixed value */
+    height:min-content; 
+    
+    display: grid; /* Prevents extra space below the iframe */
+    grid-auto-flow: row dense;
+    grid-auto-rows:10px;
+    margin-bottom: 15px; /* Add some space below the video */
+}
+
+
+
+.project-item:hover {
+    transform: translateY(-8px);/*adds animation*/
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    /*shadow increases when hovering*/
+}
+.project-item h3 {
+    font-size: 1.3em; /* 194 */
+    margin: 15px 15px 5px 15px; /* 195 */
+    color: #c7c7c7; /* 196 */
+}
+
+.project-item p {
+    font-size: 0.7em; /* 197 */
+    color: #ffffffc8; /* 198 */
+    margin: 0 15px 15px 15px; /* 199 */
+    line-height: 1.5; /* 200 */
+}
+
+/* The main modal overlay (starts hidden) */
+.modal-rich-content {
+    display: none; /* Hide the modal by default */
+    position: fixed; /* Stay in place even when scrolling */
+    z-index: 1001; /* Must be higher than the header z-index */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if content is too long */
+    background-color: rgba(0, 0, 0, 0.85); /* Darker, slightly transparent background */
+    padding-top: 50px; /* Space from the top */
+    backdrop-filter: blur(5px); /* Optional: Adds a subtle blur to the background */
+}
+
+/* Modal content box (the white card) */
+.modal-content-area {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%; /* Default width for medium screens */
+    max-width: 900px; /* Maximum width */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: slideIn 0.3s ease-out; /* Simple entry animation */
+}
+
+/* Animation for smooth appearance */
+@keyframes slideIn {
+    from { transform: scale(0.95) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Header styling */
+.modal-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#modal-project-title {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+}
+
+#modal-project-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Close Button (for rich content modal) */
+.close-button-rich {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    transition: color 0.2s;
+}
+
+.close-button-rich:hover,
+.close-button-rich:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Body Content and Project Details */
+.modal-body-content {
+    display: flex;
+    flex-direction: column; /* Stack content vertically by default */
+    gap: 20px;
+}
+
+/* Media Gallery (Image/Video) */
+.project-media-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Detail Headings */
+.details-heading {
+    font-size: 1.5rem;
+    color: #5d3fd3; /* Purple accent color */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-left: 4px solid #5d3fd3;
+    padding-left: 10px;
+}
+
+/* Features List */
+#modal-project-features {
+    list-style: disc inside;
+    padding-left: 0;
+    line-height: 1.6;
+}
+
+#modal-project-features li {
+    margin-bottom: 8px;
+}
+
+/* Project Links Container and Buttons */
+.project-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.project-link-button {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.github-link {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #333;
+}
+
+.github-link:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.live-link {
+    background-color: #5d3fd3; /* Bright Purple */
+    color: #fff;
+    border: 2px solid #5d3fd3;
+}
+
+.live-link:hover {
+    background-color: #4b34b8;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (min-width: 768px) {
+    /* Side-by-side layout for larger screens */
+    .modal-body-content {
+        flex-direction: row; 
+    }
+    
+    .project-media-gallery {
+        flex: 1; /* Takes up one part of the space */
+        min-width: 300px;
+    }
+
+    .project-details {
+        flex: 2; /* Takes up two parts of the space */
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content-area {
+        width: 95%;
+        margin: 10% auto;
+    }
+    #modal-project-title {
+        font-size: 1.5rem;
+    }
+    .project-link-button {
+        width: 100%; /* Full width buttons on tiny screens */
+    }
+}
+
 
 /*--Contact section syles--*/
 .contact-section {
