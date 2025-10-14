@@ -466,8 +466,7 @@ header nav ul li a.active {
 
 .project-section h2
 {
-    margin-top: 0;
-    padding-top: 0%;
+   
     margin-bottom: 60px; /*gives padding after section headings*/
     position: relative;
     /*Establishes a positioning context for the ::after pseudo-element used for the underline.*/
@@ -693,6 +692,21 @@ header nav ul li a.active {
     transition: transform 0.5s ease-in-out, 
                 position 0.5s, 
                 z-index 0.5s;
+
+        /* Side-by-side layout for larger screens */
+    .modal-body-content {
+        flex-direction: row; 
+    }
+    
+    .project-media-gallery {
+        flex: 1; /* Takes up one part of the space */
+        min-width: 300px;
+    }
+
+    .project-details {
+        flex: 2; /* Takes up two parts of the space */
+        padding-left: 20px;
+    }
     
 }}
 
@@ -910,39 +924,22 @@ header nav ul li a.active {
 }
 
 
-@media (min-width: 768px) {
-    /* Side-by-side layout for larger screens */
-    .modal-body-content {
-        flex-direction: row; 
-    }
-    
-    .project-media-gallery {
-        flex: 1; /* Takes up one part of the space */
-        min-width: 300px;
-    }
-
-    .project-details {
-        flex: 2; /* Takes up two parts of the space */
-        padding-left: 20px;
-    }
-}
 
 
 
-@media (max-width: 480px) {
+
+@media (max-width: 565px) {
     .modal-content-area {
         width: 95%;
         margin: 10% auto;
     }
-    #modal-project-title {
-        font-size: 2.5rem;
-    }
+    
     .project-link-button {
         width: 100%; /* Full width buttons on tiny screens */
     }
     .project-item h3 
     {
-        font-size: 0.9em; /* 194 */
+        font-size: 0.8em; /* 194 */
     }
 
     .project-item p1 {
@@ -957,6 +954,8 @@ header nav ul li a.active {
         margin: 0 15px 15px 15px; /* 199 */
         line-height: 1.5; /* 200 */
     }
+
+
 
 }
 
@@ -1077,7 +1076,23 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
        flex-direction: row;
        justify-content: space-between;
     }
+    
+    /* Side-by-side layout for larger screens */
+    .modal-body-content {
+        flex-direction: row; 
+    }
+    
+    .project-media-gallery {
+        flex: 1; /* Takes up one part of the space */
+        min-width: 300px;
+    }
+
+    .project-details {
+        flex: 2; /* Takes up two parts of the space */
+        padding-left: 20px;
+    }
 }
+
 /*same for hero section*/
 @media(max-width:768px) /* Added 'px' to media query */
 {
@@ -1101,6 +1116,21 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         /* Consider adjusting if you still see issues */
         bottom:20px;
     }
+
+    .modal-body-content {
+        font-size: smaller;
+    }
+    #modal-project-title{
+        font-size: 1.5em;
+    }
+    #modal-project-subtitle
+    {
+        font-size: 0.8em;
+    }
+    #details-heading
+    {
+        font-size: 0.8em;
+    }
 }
 
 @media screen and (max-width: 714px) {
@@ -1108,10 +1138,11 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     #hero.hero-section,
     .about-section,
     .gallery-section,
+    .project-section,
     .contact-section {
-        padding-left: 10px; /* Smaller horizontal padding */
-        padding-right: 10px; /* Smaller horizontal padding */
-        padding-top: 15px; /* Adjust top padding if needed */
+        padding-left: 5px; /* Smaller horizontal padding */
+        padding-right: 5px; /* Smaller horizontal padding */
+        padding-top: 5px; /* Adjust top padding if needed */
         padding-bottom: 15px; /* Adjust bottom padding if needed */
     }
    
@@ -1120,7 +1151,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         padding: 1rem 15px; /* Smaller horizontal padding for header */
     }
     header h1 {
-        font-size: 1.5em; /* Smaller title */
+        font-size: 1em; /* Smaller title */
     }
     header nav a {
         font-size: 0.9em; /* Smaller nav links */
@@ -1214,18 +1245,19 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     .contact-section h2,
     .project-section h2
     {
-        padding-top: 5%;
+        
         margin-bottom: 30px; /*gives padding after section headings*/
         position: relative;
         /*Establishes a positioning context for the ::after pseudo-element used for the underline.*/
         padding-bottom: 10px;
         /*Adds space below the heading text but above the ::after underline.*/
-        font-size: 1.5em;
+        font-size: 1em;
     } 
 
     .about-section h2::after,
     .gallery-section h2::after,
-    .contact-section h2::after 
+    .contact-section h2::after,
+    .project-section h2::after 
     {
         align-items: center;
         width:75px;
@@ -1285,19 +1317,19 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         display: flex; /* Should already be here from previous suggestions */
         justify-content: space-between; /* Should already be here */
         align-items: center; /* Should already be here */
-        padding-left: 15px; /* Adjust as needed */
-        padding-right: 15px; /* Adjust as needed */
+        padding-left: 0px; /* Adjust as needed */
+        padding-right: 0px; /* Adjust as needed */
 
         /* Prevent header from wrapping its direct children (title and nav) */
         flex-wrap: nowrap; /* Crucial: Prevents main header elements from wrapping */
     }
 
     header h1 {
-        font-size: 1.2em; /* Keep title smaller for mobile */
+        font-size: 0.9rem; /* Keep title smaller for mobile */
         white-space: nowrap; /* Crucial: Prevents the H1 text from wrapping */
         flex-shrink: 0; /* Prevents the H1 from shrinking */
         margin-right: 5px; /* Add some space between title and nav */
-        margin-left: -10px;
+       
     }
 
     header nav {
