@@ -935,7 +935,7 @@ header nav ul li a.active {
         margin: 10% auto;
     }
     #modal-project-title {
-        font-size: 1rem;
+        font-size: 2.5rem;
     }
     .project-link-button {
         width: 100%; /* Full width buttons on tiny screens */
