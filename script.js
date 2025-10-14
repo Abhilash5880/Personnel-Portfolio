@@ -303,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProjectProblem = document.getElementById('modal-project-problem');
     const modalProjectFeatures = document.getElementById('modal-project-features');
     const modalProjectChallenges = document.getElementById('modal-project-challenges');
+    const modaltech = document.getElementById('modal-tech');
     const modalProjectLinks = document.getElementById('modal-project-links');
 
     // 2. Define your project data
@@ -324,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             challenges:["<b>Finding the right AI model : </b>Initially, I planned on Gemini and ChatGPT for generating results but after continuous failures I realized they were paid. However, to maintain an open-source and cost-effective approach, the focus shifted to finding a suitable free model. <br></br>This led to a search on <b>Hugging Face, a platform known for hosting a vast collection of accessible AI models for various purposes which can also be trained on different datasets</b> During model testing. An initial model, <b>zai-org/GLM-4.5</b>, while capable, would often include a verbose 'thinking' process in its output. It would start with an internal thought process like 'Thought: The user wants a summary of...' before providing the actual summary. This unnecessary text was not suitable for a user-facing application. <br></br>The issue was resolved by switching to a more suitable model, <b>Qwen/Qwen3-Coder-480B-A35B-Instruct</b>, which produced a clean, direct response without the extraneous conversational filler. The AI model finally chosen for its ability to follow instructions and generate accurate, concise recaps quickly.<br></br>",
                         "<b>Secure API Key Management:</b> Encountered lots of errors when attempting to <b>push a hard-coded API key to GitHub</b>. The solution involved <b>moving the key to a separate config.js file and adding that file to .gitignore</b> to prevent it from being exposed in the public repository.",],
+            tech: ['JavaScript', 'Chrome Extension', 'HTML', 'CSS', 'Hugging Face'],
             links: {
                 github: 'https://github.com/Abhilash5880/NETFLIX-Show-recaps', // Replace with actual link
                 live: 'https://youtu.be/VsDYHcxCVxQ' // Replace with actual link if deployed
@@ -331,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 'personnel-portfolio', // Unique ID for this project
-            title: 'Pixel & Pigments',
+            title: 'Pixel & Pigments ✒️',
             subtitle: 'A responsive, and interactive web portfolio showcasing a collection of digital art and creative expressions; designed to act as an online resume/portfolio',
             mainImage: 'images/Screenshot 2025-10-06 182300.png',
             problem: 'In today\'s competitive professional landscape, having a strong online presence is essential. A static resume often fails to capture the full scope of a person\'s skills, projects, and personality. This project aims to solve that by providing a dynamic, engaging, and easily accessible online portfolio that serves as an enhanced resume, allowing individuals to showcase their work, achievements, and unique abilities in a visually compelling manner.',
@@ -346,6 +348,9 @@ document.addEventListener('DOMContentLoaded', () => {
             challenges:['<b>Gallery Grid Masonry Effect:</b> The JavaScript for calculating grid-row-end for the <b>Masonry-like layout like Pinterest</b> can sometimes result in <b>NaN errors</b> in the console, leading to inconsistent item sizing and spacing.<br></br>',
                 '<b>Fine Tuning for different screen size:</b> Used <b>CSS media queries</b> to change sizes and alignment to make the website look good on all screen sizes',
                 ],
+            
+            tech:['HTML', 'CSS', 'Javascript'],
+                
             links: {
                 github: 'https://github.com/Abhilash5880/Personnel-Portfolio', // Replace with actual link
                 live: 'https://abhilash5880.github.io/Personnel-Portfolio/' // Replace with actual link if deployed
@@ -390,20 +395,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalProjectFeatures.appendChild(li);
                 });
 
-                modalProjectChallenges.innerHTML = '';
-                if (project.challenges && project.challenges.length > 0) {
-                    const ul = document.createElement('ul'); // Create an unordered list element
-    
-                     project.challenges.forEach(challenge => {
-                        const li = document.createElement('li');
-                             // Use innerHTML to allow bold tags/formatting inside the challenge string
-                        li.innerHTML = challenge; 
-                        ul.appendChild(li);
-                    });
-    
-                modalProjectChallenges.appendChild(ul); // Append the whole list to the modal section
-} 
                 
+                modalProjectChallenges.innerHTML = '';
+                project.challenges.forEach(challenge_ => {
+                    const li = document.createElement('li');
+                    li.innerHTML = challenge_;
+                    modalProjectChallenges.appendChild(li);
+                });
+                
+
+                modaltech.innerHTML = '';
+                project.tech.forEach(tech_ => {
+                    const li = document.createElement('li');
+                    li.innerHTML = tech_;
+                    modaltech.appendChild(li);
+                });
                 
                 // Clear existing links and add new ones
                 modalProjectLinks.innerHTML = '';
