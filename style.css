@@ -458,7 +458,39 @@ header nav ul li a.active {
     line-height: 1.4;
 }
 
+.project-section {
+    padding: 40px;
+    background-color: #1a1a1a ;
+    text-align: center;   
+}
 
+.project-section h2
+{
+    margin-top: 0;
+    padding-top: 0%;
+    margin-bottom: 60px; /*gives padding after section headings*/
+    position: relative;
+    /*Establishes a positioning context for the ::after pseudo-element used for the underline.*/
+    padding-bottom: 10px;
+    /*Adds space below the heading text but above the ::after underline.*/
+    font-size: 2.5em;
+    font-family:'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
+    color: #d8d8d8;
+    text-shadow: 0 2px 3px #0a0a0a;
+}
+
+.project-section h2::after {
+    content: '';/*Required for the pseudo-element.*/
+    position: absolute;
+    left: 50%;
+    /*Moves the pseudo-element's left edge to the horizontal center of the h2.*/
+    transform: translateX(-50%);
+    bottom: 0;
+    width:100px;
+    height: 5px;
+    background-color: #9500ff;
+    border-radius: 3px;
+}
 /*---Gallery section styles---*/
 .gallery-section {
     padding: 40px;
@@ -716,24 +748,6 @@ header nav ul li a.active {
     font-size: 1.1em; 
 
     text-shadow:0 2px 4pxrgba(128, 31, 203, 0.427)e;
-
-    /*color: #ffffff; 
-    margin: 2%; 
-    
-    background-color: #8c00ff;
-    
-    object-fit: contain;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 2%;
-    border-radius: 10px;
-    border-style: solid;
-    width: fit-content;
-    border-width: 1px;
-    text-align:justify;
-    margin-left: auto;
-    margin-right: auto;*/
 }
 
 .project-item p {
@@ -895,7 +909,7 @@ header nav ul li a.active {
     transform: translateY(-2px);
 }
 
-/* Responsive adjustments for smaller screens */
+
 @media (min-width: 768px) {
     /* Side-by-side layout for larger screens */
     .modal-body-content {
@@ -913,17 +927,37 @@ header nav ul li a.active {
     }
 }
 
+
+
 @media (max-width: 480px) {
     .modal-content-area {
         width: 95%;
         margin: 10% auto;
     }
     #modal-project-title {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     .project-link-button {
         width: 100%; /* Full width buttons on tiny screens */
     }
+    .project-item h3 
+    {
+        font-size: 0.9em; /* 194 */
+    }
+
+    .project-item p1 {
+        font-size: 0.8em; 
+
+        text-shadow:0 2px 4pxrgba(128, 31, 203, 0.427)e;
+    }
+
+    .project-item p {
+        font-size: 0.8em; /* 197 */
+        color: #ffffffc8; /* 198 */
+        margin: 0 15px 15px 15px; /* 199 */
+        line-height: 1.5; /* 200 */
+    }
+
 }
 
 
@@ -1177,7 +1211,8 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 {
     .about-section h2,
     .gallery-section h2,
-    .contact-section h2
+    .contact-section h2,
+    .project-section h2
     {
         padding-top: 5%;
         margin-bottom: 30px; /*gives padding after section headings*/
@@ -1192,18 +1227,41 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     .gallery-section h2::after,
     .contact-section h2::after 
     {
-            align-items: center;
-            width:75px;
-            height: 3.25px;
-            border-radius: 3px;
+        align-items: center;
+        width:75px;
+        height: 3.25px;
+        border-radius: 3px;
+    }
+
+    .project-section h2
+    {
+        margin-top: 0;
+        padding-top: 0%;
+        margin-bottom: 50px; /*gives padding after section headings*/
+        position: relative;
+        /*Establishes a positioning context for the ::after pseudo-element used for the underline.*/
+        padding-bottom: 5px;
+        /*Adds space below the heading text but above the ::after underline.*/
+        font-size: 1.5em;
+        font-family:'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
+        color: #d8d8d8;
+        text-shadow: 0 2px 3px #0a0a0a;
+    }
+
+    .project-section h2::after 
+    {
+        align-items: center;
+        width:75px;
+        height: 3.25px;
+        border-radius: 3px;
     }
     .about-section p 
     {
-    max-width: 1200px;/*Limits the width of paragraphs for readability.*/
-    margin: 0 auto 20px auto;/* Centers paragraphs and adds 15px bottom margin*/
-    font-size: 0.9em;
-    line-height: 1.2;
-}
+        max-width: 1200px;/*Limits the width of paragraphs for readability.*/
+        margin: 0 auto 20px auto;/* Centers paragraphs and adds 15px bottom margin*/
+        font-size: 0.9em;
+        line-height: 1.2;
+    }
     }
 
     .gallery-item p 
