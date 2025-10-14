@@ -698,12 +698,27 @@ header nav ul li a.active {
     font-size: 1.3em; /* 194 */
     margin: 15px 15px 15px 15px; /* 195 */
     color: #f1f1f1; /* 196 */
+    background-color: #8420ff; /* 175 */
+    color: white; /* 176 */
+    box-shadow: 0 4px 8px rgba(106, 0, 255, 0.3); /* 177 */
+    display: flex;
+    /*Allows filter buttons to wrap to the next line on smaller screens.*/
+    justify-content: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 20px;
+    border-radius: 25px;
+    
 }
 
 .project-item p1 {
-    font-size: 0.8em; /* 197 */
-    color: #ffffff; /* 198 */
-    margin: 5px 15px 15px 5px; /* 199 */
+    font-size: 1.1em; 
+
+    text-shadow:0 2px 4pxrgba(128, 31, 203, 0.427)e;
+
+    /*color: #ffffff; 
+    margin: 2%; 
     
     background-color: #8c00ff;
     
@@ -711,14 +726,14 @@ header nav ul li a.active {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 10px;
+    padding: 2%;
     border-radius: 10px;
     border-style: solid;
     width: fit-content;
     border-width: 1px;
-    text-align: center;
+    text-align:justify;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;*/
 }
 
 .project-item p {
