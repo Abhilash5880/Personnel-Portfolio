@@ -87,10 +87,10 @@ header {
     position: sticky; /* Or fixed if it was */
 }
 .container {
-    max-width: 1200px; /*Limits the maximum width of content within elements
+    max-width: auto; /*Limits the maximum width of content within elements
     that use the .container class, preventing content from stretching too wide on large screens.*/
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 2%;
 }
 
 /* Global Button Styling (used for View My Art, Send Message) */
@@ -188,69 +188,34 @@ header nav ul li a.active {
     padding: 8px 22px; /* Padding expands */
 }
 
-.hero-section {
-    /* Your existing background settings for the whole hero section */
-    background-color: rgb(0, 0, 0); /* Or any other background color for the hero section */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+
+
+
+/* Assuming your image has a class or ID, e.g., '.circular-image' */
+.circular-image {
+    /* 1. Set fixed dimensions to ensure it's a perfect square */
+    width: 150px; 
+    height: 150px; 
+
+    /* 2. Apply 50% border-radius to make the square a circle */
+    border-radius: 50%;
+
+    /* 3. Ensure the image covers the entire circle without distortion or gaps */
+    object-fit: cover; 
+
+    /* 4. Clip any parts of the rectangular image that fall outside the circle */
+    overflow: hidden; 
     
-    color: rgb(255, 255, 255); /* Sets default text color for content within hero-section */
-    text-align: center; /* Centers inline-level text directly within hero-section, but Flexbox will govern main children */
-
-    /* Full viewport height for the entire hero section */
-    min-height: 100vh; /* Ensures the hero section takes up at least the full viewport height */
-    width: 100%; /* Ensures it takes full width */
-    position: relative; /* Essential for positioning the ::before overlay and other children */
-    overflow: hidden; /* Helps prevent unwanted scrollbars within the hero section itself */
-
-    /* *** FLEXBOX FOR THE MAIN LAYOUT ( arranging .top-visual-area and .container ) *** */
-    display: flex; /* Makes .hero-section a flex container */
-    flex-direction: column; /* Stacks its direct children (.top-visual-area and .container) vertically */
-    justify-content: flex-start; /* IMPORTANT: Aligns content to the top. We'll control distribution with flex-grow on children. */
-    align-items: center; /* Horizontally centers its direct children (the visual area and the text container) */
-
-    padding: 0;
-    transition: opacity 0.8s ease-out;
-
-}
-
-.hero-section::before {
-    content: '';/*: Required for ::before and ::after pseudo-elements to display.*/
-    position: absolute;
-    top: 0;
-    left:0;
-    right: 0;
-    bottom: 0;
-    /*Makes the pseudo-element cover the entire area of its parent (.hero-section).*/
-
-    /*Creates a semi-transparent black overlay (40% opacity)
-    for readability of text on the background image.*/
-    /*background-color: rgba(0, 0, 0, 0.4);*/
-    z-index: 1;
-    /*Places the overlay above the background image but below the hero section's content.*/
-}
-.hero-section .top-visual-area {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Placed below text content */
-    overflow: hidden;
-    transition: all 0.5s ease-in-out; /* Downward shadow, slightly blurred, semi-transparent black */
+    /* Optional: Add a subtle border for a professional look */
+    border: 3px solid #f0f0f0; 
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 180px;
 }
 
 /* Styles for the actual image/video element within .top-visual-area */
-.hero-section .top-visual-area img,
-.hero-section .top-visual-area video { /* Target both images and videos */
-    width: 100%; /* Make the image/video stretch to fill the .top-visual-area horizontally */
-    height: 100%; /* Make the image/video stretch to fill the .top-visual-area vertically */
-    object-fit: cover; /* IMPORTANT: This will make the image/video cover the entire area, cropping if necessary. Use 'contain' if you want to see the whole image without cropping, but it might leave black bars. */
-    display: block; /* Removes any extra space below images sometimes */
-}
+
 .hero-section .container {
     position: relative;
     /*Ensures the container's content (h2, p, buttons)
@@ -272,13 +237,19 @@ header nav ul li a.active {
 /* Reduce gap between H2 and P tags */
 .hero-section .container h2 {
     margin-bottom: 1%;
-    ;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .hero-section .container p {
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 1.1em;
+    text-align: center;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
     
 }
 
@@ -296,6 +267,8 @@ header nav ul li a.active {
 .hero-section .container .button {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.1em;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* Media Query for Larger Screens (Desktop/Tablet Landscape) */
@@ -304,7 +277,7 @@ header nav ul li a.active {
         flex-direction: row; /* CHANGED: Reverses the order - GIF on left, Text on right */
         justify-content: space-between;
         align-items: stretch;
-        text-align: right; /* CHANGED: Align text to the right for the hero section overall */
+        text-align: center; /* CHANGED: Align text to the right for the hero section overall */
         /*padding: 0 50px;*/
     }
 
@@ -312,7 +285,7 @@ header nav ul li a.active {
         flex: 1;
         max-width: 50%;
         padding: 0;
-        text-align: right; /* CHANGED: Align text to the right within its container */
+        text-align: center; /* CHANGED: Align text to the right within its container */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -321,26 +294,7 @@ header nav ul li a.active {
         
     }
 
-    #hero .top-visual-area {
-        
-        flex: 1;
-        height: auto;
-        display: flex;
-        justify-content: flex-end; /* CHANGED: Pushes the GIF to the left */
-        align-items: stretch;
-        overflow: hidden;
-    }
-
-    #hero .top-visual-area img,
-    #hero .top-visual-area video {
-        
-        height: auto;
-        object-fit:cover;
-        object-position: center; /* CHANGED: Positions the GIF content to the left */
-        filter: brightness(1);
-        align-items: stretch;
-    }
-
+    
     .scroll-down {
         display: none;
     }
@@ -1162,7 +1116,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     .hero-section .container {
         padding: 1% 15px 30px 15px; /* Reduced padding for mobile hero text/button area */
          /* Keep text/button aligned right as per previous request */
-        text-align: right;
+        text-align: center;
         font-size: 0.8em;
     }
     .hero-section h2 
@@ -1407,8 +1361,8 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 
     .hero-section .container {
         width: 100%; /* Ensure text container takes full width below the GIF */
-        
-        text-align: right; /* Align text and button to the center */
+        font-size: smaller;
+        text-align: center; /* Align text and button to the center */
         display: flex; /* Make it a flex container */
         flex-direction: column; /* Stack its own content vertically */
         justify-content: center; /* Vertically center its content */
@@ -1417,14 +1371,17 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     }
 
     .hero-section h2 {
-        font-size: 2em; /* Adjust font size as needed for mobile */
+        font-size: 1.7em; /* Adjust font size as needed for mobile */
         margin-bottom: 10px;
+       
     }
 
     .hero-section p {
-        font-size: 0.95em; /* Adjust font size as needed for mobile */
+        font-size: 0.7em; /* Adjust font size as needed for mobile */
         margin-bottom: 20px;
         max-width: 100%; /* Prevent very long lines on mobile */
+        padding-top: 10px;
+        color: #7f7f7f;
     }
 
     .hero-section .button {
