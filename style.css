@@ -189,7 +189,15 @@ header nav ul li a.active {
 }
 
 
-
+.hero-section
+{       
+    background-color: #0f0816;
+    z-index: 1000;
+    width:100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
 
 /* Assuming your image has a class or ID, e.g., '.circular-image' */
 .circular-image {
