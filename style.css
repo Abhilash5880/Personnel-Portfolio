@@ -107,6 +107,9 @@ header {
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
     }
 
 .button:hover {
@@ -258,6 +261,7 @@ header nav ul li a.active {
     display: flex;
     margin-right: auto;
     margin-left: auto;
+    color:#4e4e4e;
     
 }
 
@@ -275,6 +279,7 @@ header nav ul li a.active {
 .hero-section .container .button {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.1em;
+    display:block;
     margin-right: auto;
     margin-left: auto;
 }
