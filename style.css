@@ -107,9 +107,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
+    
     }
 
 .button:hover {
@@ -202,6 +200,49 @@ header nav ul li a.active {
     overflow: hidden;
 }
 
+#hero {
+    position: relative; /* Set the Hero section as the positioning context */
+    /* Ensure the height is full screen for the gradient to cover it */
+    min-height: 100vh;
+    overflow: hidden; /* Crucial: Hides the gradient circles that extend past the boundaries */
+    background-color: #0A0A0A; /* Your dark background */
+    /* ... other hero styles ... */
+}
+
+/* --- Gradient Overlays (Reusing the structure from before) --- */
+.gradient-overlay {
+    position: absolute;
+    inset: 0; 
+    pointer-events: none; 
+    z-index: 0; /* Keep it behind the profile picture and text (which should have z-index: 2 or more) */
+}
+
+.gradient-blur {
+    position: absolute;
+    width: 800px;
+    height: 800px; 
+    border-radius: 50%;
+    opacity: 0.3; 
+    filter: blur(120px); 
+    transition: opacity 1s ease; /* Add transition for a smooth fade out */
+    z-index: 1;
+}
+
+.top-right-blur {
+    background-color: #6200ff94;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%); 
+    z-index: 1;
+}
+
+.bottom-left-blur {
+    background-color: #c800ff90;
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+    z-index: 1; 
+}
 /* Assuming your image has a class or ID, e.g., '.circular-image' */
 .circular-image {
     /* 1. Set fixed dimensions to ensure it's a perfect square */
@@ -223,6 +264,11 @@ header nav ul li a.active {
     margin-right: auto;
     margin-left: auto;
     margin-top: 180px;
+    align-content: justify;
+    position: relative;
+    z-index:9999;
+    box-shadow: #b04fffbf 0px 0px 30px 2px;
+   ;
 }
 
 /* Styles for the actual image/video element within .top-visual-area */
@@ -231,7 +277,7 @@ header nav ul li a.active {
     position: relative;
     /*Ensures the container's content (h2, p, buttons)
     is positioned relative to the container itself, and z-index works correctly for it.*/
-    z-index: 2;/*Places the container's content above the ::before overlay.*/
+    /*Places the container's content above the ::before overlay.*/
     width:100%;
     max-width: 800px;
 
@@ -243,6 +289,8 @@ header nav ul li a.active {
     padding: 35px;
     padding-bottom: 50px;
     justify-content: center;
+    align-items: center;
+    z-index:9999;
 
 }
 /* Reduce gap between H2 and P tags */
@@ -251,17 +299,19 @@ header nav ul li a.active {
     display: flex;
     margin-right: auto;
     margin-left: auto;
+    z-index: 9999;
 }
 
 .hero-section .container p {
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 1.1em;
-    text-align: center;
+    
     display: flex;
     margin-right: auto;
     margin-left: auto;
-    color:#4e4e4e;
+    color:#9f9f9f;
+    z-index: 9999;
     
 }
 
@@ -279,9 +329,12 @@ header nav ul li a.active {
 .hero-section .container .button {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.1em;
-    display:block;
     margin-right: auto;
     margin-left: auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    
 }
 
 /* Media Query for Larger Screens (Desktop/Tablet Landscape) */
@@ -304,6 +357,7 @@ header nav ul li a.active {
         justify-content: center;
         padding-right: 20px;
         padding-left: 40px;
+        z-index: 9999;
         
     }
 
@@ -443,6 +497,16 @@ header nav ul li a.active {
     font-family:'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
     color: #d8d8d8;
     text-shadow: 0 2px 3px #0a0a0a;
+}
+
+.project-section p
+{
+   
+    max-width: 1600px;/*Limits the width of paragraphs for readability.*/
+    margin: 0 auto 15px auto;/* Centers paragraphs and adds 15px bottom margin*/
+    font-size: 1.2em;
+    line-height: 1.4;
+    padding-bottom: 20px;
 }
 
 .project-section h2::after {
@@ -623,6 +687,10 @@ header nav ul li a.active {
 
 @media(max-width:865px)
 {
+    .circular-image
+    {
+        z-index: 9999;
+    }
     .project-item{
         display: flex;
         flex-direction: column;
@@ -1066,16 +1134,19 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     .hero-section h2
     {
        font-size: 2em;
+       z-index: 9999;
     }
     .hero-section p
     {
        font-size: 0.8em;
+       z-index: 9999;
     }
     .hero-section .button
     {
         padding : 8px 16px;
         font-size: 0.8em;
         margin-bottom: 24px;
+        z-index: 9999;
     }
     .scroll-down
     {
@@ -1131,6 +1202,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
          /* Keep text/button aligned right as per previous request */
         text-align: center;
         font-size: 0.8em;
+        z-index: 9999;
     }
     .hero-section h2 
     {
@@ -1254,14 +1326,21 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 3.25px;
         border-radius: 3px;
     }
-    .about-section p 
+    .about-section p,
+    .project-section p 
     {
         max-width: 1200px;/*Limits the width of paragraphs for readability.*/
         margin: 0 auto 20px auto;/* Centers paragraphs and adds 15px bottom margin*/
         font-size: 0.9em;
         line-height: 1.2;
     }
+    .project-section p 
+    {
+        margin-left: 20px;
+        margin-right: 20px;
+       
     }
+}
 
     .gallery-item p 
     {
@@ -1351,26 +1430,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         position: relative; /* If you have absolute/fixed children, make sure they are relative to this */
     }
 
-    .hero-section .top-visual-area {
-        width: 100%; /* Make GIF area take full width */
-        /* Set a specific height for the GIF area relative to viewport height.
-           This makes the GIF take roughly the top half of the screen,
-           allowing text to appear below. Adjust 50vh as needed. */
-        height: 50vh; /* Example: Takes 50% of viewport height */
-        overflow: hidden; /* Hide any overflow if GIF aspect ratio doesn't match 50vh */
-        display: flex; /* Use flex to center the image if it's smaller than the container */
-        justify-content: center;
-        align-items: center;
-       
-    }
-
-    .hero-section .top-visual-area img {
-        width: 100%; /* Ensure image fills its container horizontally */
-        height: 100%; /* Ensure image fills its container vertically */
-        object-fit: cover; /* Crop image to fit without distortion */
-        display: block; /* Remove any extra space below image */
-       
-    }
+    
 
     .hero-section .container {
         width: 100%; /* Ensure text container takes full width below the GIF */
@@ -1381,6 +1441,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         justify-content: center; /* Vertically center its content */
         align-items:flex-end; /* Horizontally center its content */
         flex-grow: 1; /* Allow this container to take up remaining vertical space */
+        z-index: 9999;
     }
 
     .hero-section h2 {
