@@ -267,9 +267,23 @@ header nav ul li a.active {
     align-content: justify;
     position: relative;
     z-index:9999;
-    box-shadow: #b04fffbf 0px 0px 30px 2px;
-   ;
+    
+    animation: glow-blink 2s infinite alternate;
 }
+
+@keyframes glow-blink {
+    0% {
+        box-shadow: 0 0 15px 5px #b04fff7c; /* Starting glow color and spread */
+    }
+    50% {
+        box-shadow: 0 0 25px 10px #b04fff7c; /* More intense, slightly different purple */
+    }
+    100% {
+        box-shadow: 0 0 15px 5px #b04fff7c; /* Return to start */
+    }
+}
+
+    
 
 /* Styles for the actual image/video element within .top-visual-area */
 

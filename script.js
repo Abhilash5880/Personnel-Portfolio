@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'personnel-portfolio', // Unique ID for this project
             title: 'Pixel & Pigments ✒️',
             subtitle: 'A responsive, and interactive web portfolio showcasing a collection of digital art and creative expressions; designed to act as an online resume/portfolio',
-            mainImage: 'images/Screenshot 2025-10-06 182300.png',
+            mainImage: 'images/Screenshot 2025-10-17 195622.png',
             problem: 'In today\'s competitive professional landscape, having a strong online presence is essential. A static resume often fails to capture the full scope of a person\'s skills, projects, and personality. This project aims to solve that by providing a dynamic, engaging, and easily accessible online portfolio that serves as an enhanced resume, allowing individuals to showcase their work, achievements, and unique abilities in a visually compelling manner.',
             features: [
                 '<b>Responsive Design: </b>Ensures the portfolio looks great and functions perfectly on all devices, from desktops to mobile phones.',
