@@ -142,52 +142,66 @@ header .container {
 header h1 {
     margin:0;/*removes default margin from header*/
     font-size: 1.8em;
+    margin-bottom: auto;
+
 }
 
-header h1 a {
-    color:white;
-    text-decoration: none;
-}
-
-header h1 a:hover {
-    color: #f0f0f0;
-}
-
-header nav ul {
+.about-buttons nav ul {
     list-style: none; /*removes list bullets(or whatver list type is there)*/
     margin: 0;
     padding: 0;
     display: flex; /*Makes the list items <li> display in a row using flexbox*/
-    gap:20px;
+    flex-wrap: wrap;
+    gap: 5%;
+    
+   
 }
+.about-buttons ul li {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+   
+    
+    align-items: center;
 
-header nav ul li {
-    margin-left: 15px;
 }
-
-header nav ul li a {
-    color: white;
+.about-buttons ul li a {
+   
+    font-size: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    color: rgb(80, 80, 80);
     text-decoration: none;
     font-weight: bolder;
 
-    padding: 0px 0px; /* Start with no padding */
-    background-color: transparent; /* Start with no background */
-    border-radius: 0px; /* Start with no border-radius */
+    padding: 8px 22px; /* Start with no padding */
+    background-color: rgba(255, 255, 255, 0); /* Start with no background */
+    border-radius: 20px; /* Start with no border-radius */
+    border-style: solid;
+    border-width: 1px;
+    
 
     /* IMPORTANT: Include ALL properties that change on hover in the transition */
-    transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease, padding 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease, ;
 
     /* REMOVE THIS LINE: You are already handling spacing with 'gap' on 'ul' or 'margin-left' on 'li' */
     /* margin-left: 15px; */
 }
 
-header nav ul li a:hover,
-header nav ul li a.active {
-    color: #000000; /* Text color changes to black */
-    background-color: white; /* Background becomes white */
-    border-radius: 20px; /* Corners become rounded */
-    padding: 8px 22px; /* Padding expands */
+.about-buttons nav ul li a:hover,
+.about-buttons nav ul li a.active {
+   color: #ffffff; /* Text color changes to black */
+    background-color: #8c00ff; /* Background becomes white */
+    border-radius: 20px; /* Start with no border-radius */
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px 22px;
 }
+
+
+
 
 
 .hero-section
@@ -1199,16 +1213,58 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     }
    
     /*Header adjustments for mobile (from previous discussions, but ensure padding is right)*/
-    header {
-        padding: 1rem 15px; /* Smaller horizontal padding for header */
-    }
-    header h1 {
-        font-size: 1em; /* Smaller title */
-    }
-    header nav a {
-        font-size: 0.9em; /* Smaller nav links */
-        padding: 5px 8px; /* Smaller nav link padding */
-    }
+    .about-buttons nav ul {
+    list-style: none; /*removes list bullets(or whatver list type is there)*/
+    margin: 0;
+    padding: 0;
+    display: flex; /*Makes the list items <li> display in a row using flexbox*/
+    
+   
+}
+.about-buttons ul li {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.about-buttons ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(80, 80, 80);
+    text-decoration: none;
+    font-weight: bolder;
+
+    padding: 8px 22px; /* Start with no padding */
+    background-color: rgba(255, 255, 255, 0); /* Start with no background */
+    border-radius: 20px; /* Start with no border-radius */
+    border-style: solid;
+    border-width: 1px;
+    font-size: smaller;
+
+    /* IMPORTANT: Include ALL properties that change on hover in the transition */
+    transition: color 0.3s ease, background-color 0.3s ease, ;
+
+    /* REMOVE THIS LINE: You are already handling spacing with 'gap' on 'ul' or 'margin-left' on 'li' */
+    /* margin-left: 15px; */
+}
+
+.about-buttons nav ul li a:hover,
+.about-buttons nav ul li a.active {
+    color: #ffffff; /* Text color changes to black */
+    background-color: #8c00ff; /* Background becomes white */
+    border-radius: 20px; /* Start with no border-radius */
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px 22px;
+    
+}
 
     /* Hero section content adjustments for mobile */
     .hero-section .container {
@@ -1371,65 +1427,13 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 @media screen and (max-width: 565px)
     
 {
-    header 
-    {
-        /* Ensure display: flex and justify-content: space-between are already here */
-        display: flex; /* Should already be here from previous suggestions */
-        justify-content: space-between; /* Should already be here */
-        align-items: center; /* Should already be here */
-        padding-left: 0px; /* Adjust as needed */
-        padding-right: 0px; /* Adjust as needed */
-
-        /* Prevent header from wrapping its direct children (title and nav) */
-        flex-wrap: nowrap; /* Crucial: Prevents main header elements from wrapping */
-    }
+    
 
     header h1 {
-        font-size: 0.9rem; /* Keep title smaller for mobile */
-        white-space: nowrap; /* Crucial: Prevents the H1 text from wrapping */
-        flex-shrink: 0; /* Prevents the H1 from shrinking */
-        margin-right: 5px; /* Add some space between title and nav */
-       
+        font-size: 0.9em; /* Keep title smaller for mobile */
     }
 
-    header nav {
-        flex-grow: 1; /* Allow navigation to take remaining space */
-        text-align: right; /* Keep nav items aligned to the right */
-        white-space: nowrap; /* Crucial: Prevents navigation links from wrapping to a new line */
-        overflow-x: auto; /* Allows horizontal scrolling WITHIN the nav if links are too long */
-        -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS */
-        /* To hide scrollbar on some browsers, but still allow scroll: */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;  /* IE and Edge */
-    }
-
-    /* For Webkit browsers (Chrome, Safari) */
-    header nav::-webkit-scrollbar {
-        display: none; /* Hide scrollbar */
-    }
-
-    header nav a {
-        font-size: 0.7em; /* Make navigation links even smaller if necessary */
-        padding: 3px 4px; /* Reduce padding around links more if needed */
-        display: inline-block; /* Ensure padding works correctly */
-    }
-
-    header nav ul
-    {
-     gap:14px;
-     padding-left: 30px;
-    }
-
-    header nav ul li {
-    margin-left: 10px;
-    }
-
-    header nav ul li a:hover,
-    header nav ul li a.active 
-    {
-    border-radius: 20px; /* Corners become rounded */
-    padding: 4px 15px; /* Padding expands */
-   }
+    
 }
 
 @media screen and (max-width: 767px) {
