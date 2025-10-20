@@ -107,6 +107,10 @@ header {
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
     
     }
 
@@ -146,6 +150,21 @@ header h1 {
 
 }
 
+.hero-section .container {
+    display: flex; /* Ensure it's a flex container */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally in a column layout */
+    justify-content: center; /* Center children vertically if container has height */
+    text-align: center; /* For text inside direct children like <p> */
+    /* ... other styles ... */
+}
+
+/* Ensure the .bio div itself doesn't have conflicting margins */
+.bio {
+    /* If it has width, margin: auto can also help center a block element */
+    margin: 0 auto; 
+    /* Or if it's already centered by flexbox, you might not need this */
+}
 .about-buttons nav ul {
     list-style: none; /*removes list bullets(or whatver list type is there)*/
     margin: 0;
@@ -386,7 +405,16 @@ header h1 {
         padding-right: 20px;
         padding-left: 40px;
         z-index: 9999;
-        
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #hero .container .bio
+    {
+      
+        margin-right: auto;
+        margin-left: auto;
+       
     }
 
     
