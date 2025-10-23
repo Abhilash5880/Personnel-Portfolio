@@ -121,7 +121,8 @@ header {
 
 /*---Header Styles ---*/
 header {
-    background-color: #272727; /*sets a dark grey background for header*/
+    background-color: #202020d3; /*sets a dark grey background for header*/
+    backdrop-filter: blur(2px);
     color: white;/* changes colour of text in Header*/
     padding: 1rem;/*Adds vertical padding
     (1rem = typically 16px) to the header, no horizontal padding as the .container handles that.*/
@@ -867,7 +868,7 @@ header h1 {
     overflow: auto; /* Enable scroll if content is too long */
     background-color: rgba(0, 0, 0, 0.85); /* Darker, slightly transparent background */
     padding-top: 50px; /* Space from the top */
-    backdrop-filter: blur(5px); /* Optional: Adds a subtle blur to the background */
+    backdrop-filter: blur(2px); /* Optional: Adds a subtle blur to the background */
 }
 
 /* Modal content box (the white card) */
