@@ -1310,6 +1310,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         background-color: #21212155;
         color: #ffffff;
         width: 100%;
+        
         padding: 12px;
         border: 3px solid #000000;
         border-radius: 5px;
@@ -1815,5 +1816,320 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     /* --- Keep your other mobile media query styles here for header, gallery etc. --- */
 
 
+}
+
+/* --- EXPERIENCE & EDUCATION SECTION --- */
+
+.experience-section {
+    padding: 80px 0; /* Vertical padding for the section */
+    text-align: center; /* Center the section title */
+    color: #fff; /* Default text color */
+}
+
+
+
+.experience-section .underline {
+    width: 150px;
+    height: 5px;
+    background-color: #994ffa; /* Purple underline */
+    margin: 0 auto 50px auto; /* Center underline and add space below */
+    border-radius: 2px;
+}
+
+.experience-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Space between the two columns */
+    flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+    margin-top: 50px;
+}
+
+.experience-column {
+    flex: 1; /* Allows columns to take equal space */
+    min-width: 450px; /* Minimum width before wrapping */
+    max-width: 550px; /* Max width for readability on large screens */
+    text-align: left; /* Align content inside columns to the left */
+}
+
+.experience-column h3 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px; /* Space for the underline */
+    text-align: center;
+}
+
+/* Specific colors for column titles */
+.work-experience-column h3 {
+    color: #00e676; /* Green for Work Experience */
+}
+.education-column h3 {
+    color: #e91e63; /* Pink/Red for Education */
+}
+
+/* Underline for column titles */
+.experience-column h3::after {
+    content: '';/*Required for the pseudo-element.*/
+    position: absolute;
+    left: 50%;
+    /*Moves the pseudo-element's left edge to the horizontal center of the h2.*/
+    transform: translateX(-50%);
+    bottom: 0;
+    width:100px;
+    height: 5px;
+    background-color: currentColor;
+    border-radius: 3px;
+}
+
+
+.experience-item {
+    display: flex; /* Use flexbox for dot and content alignment */
+    margin-bottom: 40px; /* Space between each item */
+    position: relative;
+    padding-left: 30px; /* Space for the timeline line */
+}
+
+.experience-item .timeline-line {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 1; /* Place line behind the dot but above the content */
+
+    /* Positioning based on the dot (dot is at left: 4px, top: 5px, 12px tall): */
+    left: 10px; /* Aligns with the center of the dot (4px + 6px dot radius) */
+    top: 5px;  /* Line starts at the center of the dot (5px + 6px dot radius) */
+    bottom: -30px; /* Extends far down to span the large margin between items */
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #994ffa; /* Purple dot */
+    border: 2px solid #5d2b82; /* Darker purple border */
+    position: absolute;
+    left: 4px; /* Adjust to align with padding */
+    top: 5px;
+    z-index: 2; /* Ensure dot is above the line */
+}
+
+/* Specific dot colors for each column */
+.work-experience-column .timeline-dot {
+    background-color: #00e676; /* Green dot */
+    border-color: #00b0ff; /* Light blue border */
+}
+.education-column .timeline-dot {
+    background-color: #e91e63; /* Pink dot */
+    border-color: #ff4081; /* Darker pink border */
+}
+
+
+.experience-item .item-content {
+    flex-grow: 1; /* Allows content to take up remaining space */
+    margin-left: 20px; /* Space between dot and content */
+}
+
+.experience-item h4 {
+    font-size: 1.4em;
+    color: #994ffa; /* Purple for item titles */
+    margin-bottom: 5px;
+}
+
+.experience-item .company-location,
+.experience-item .school-location {
+    font-size: 0.95em;
+    color: #ccc; /* Lighter color for company/school info */
+    margin-bottom: 10px;
+}
+
+.experience-item .company,
+.experience-item .school {
+    font-weight: bold;
+    color: #b54fff; /* More prominent color for company/school name */
+}
+
+.experience-item .location,
+.experience-item .dates {
+    font-size: 0.85em;
+    color: #aaa;
+}
+
+.experience-item p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #eee;
+}
+
+.experience-item ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.experience-item ul li {
+    position: relative;
+    padding-left: 25px; /* Space for custom bullet */
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: #ddd;
+}
+
+/* Custom bullet point */
+.experience-item ul li::before {
+    content: '•'; /* Custom bullet character */
+    position: absolute;
+    left: 0;
+    color: #00e676; /* Green bullet for work */
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Education column's bullet color */
+.education-column .experience-item ul li::before {
+    color: #e91e63; /* Pink/Red bullet for education */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) 
+{
+    .experience-section.section-title
+    {
+        font-size: 0.5em;
+        color: #cacaca;
+        margin-bottom: 10px;
+    }
+    .experience-grid {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        align-items: center; /* Center stacked columns */
+    }
+
+    .experience-column {
+        min-width: unset; /* Remove min-width to allow full width */
+        max-width: 600px; /* Max width for stacked column content */
+        width: 100%; /* Take full width */
+    }
+
+    .experience-column h3::after {
+        left: 50%; /* Center the column title underline */
+        transform: translateX(-50%);
+    }
+
+    .experience-item p {
+        font-size: 0.7em;
+        
+        margin-bottom: 15px;
+        margin-right:25px;
+        
+    }
+
+    .experience-column h3 {
+        font-size: 1.3em;
+        
+    }
+
+    .experience-column h3::after {
+        
+        width:50px;
+        height: 4px;
+    }
+    
+    .experience-item {
+       
+        margin-left: 40px;
+    }
+
+    
+
+
+    .experience-item .item-content {
+        flex-grow: 1; /* Allows content to take up remaining space */
+        margin-left: 20px; /* Space between dot and content */
+    }
+
+    .experience-item h4 {
+        font-size: 1.2em;
+        color: #994ffa; /* Purple for item titles */
+        margin-bottom: 5px;
+    }
+
+    .experience-item .company-location,
+    .experience-item .school-location {
+        font-size: 0.95em;
+        color: #ccc; /* Lighter color for company/school info */
+        margin-bottom: 10px;
+    }
+
+    .experience-item .company,
+    .experience-item .school {
+        font-weight: bold;
+        color: #b54fff; /* More prominent color for company/school name */
+    }
+
+    .experience-item .location,
+    .experience-item .dates {
+        font-size: 0.85em;
+        color: #aaa;
+    }
+
+    
+
+    .experience-item ul {
+        list-style: none; /* Remove default bullets */
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .experience-item ul li {
+        position: relative;
+        padding-left: 25px; /* Space for custom bullet */
+        margin-bottom: 8px;
+        font-size: 0.7em;
+        color: #ddd;
+        margin-right: 30px;
+    }
+
+    /* Custom bullet point */
+    .experience-item ul li::before {
+        content: '•'; /* Custom bullet character */
+        position: absolute;
+        left: 0;
+        color: #00e676; /* Green bullet for work */
+        font-size: 1.2em;
+        line-height: 1;
+    }
+
+    /* Education column's bullet color */
+    .education-column .experience-item ul li::before {
+        color: #e91e63; /* Pink/Red bullet for education */
+    }
+
+
+}
+
+@media (min-width: 768px) {
+    .experience-section .section-title {
+        font-size: 2em;
+    }
+
+    .experience-column h3 {
+        font-size: 1.6em;
+    }
+
+    .experience-item {
+        padding-left: 20px;
+    }
+
+    .timeline-dot {
+        left: 0;
+        width: 10px;
+        height: 10px;
+    }
+
+    .experience-item:not(:last-child)::before {
+        left: 5px;
+    }
 }
 
