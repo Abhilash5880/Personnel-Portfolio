@@ -1824,6 +1824,8 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     padding: 80px 0; /* Vertical padding for the section */
     text-align: center; /* Center the section title */
     color: #fff; /* Default text color */
+    background-color:#1a1a1a54 ; 
+    margin-bottom: 40px;
 }
 
 
