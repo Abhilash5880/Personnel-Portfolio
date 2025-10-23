@@ -8,7 +8,7 @@ body {
     margin: 0; 
     line-height: 1.3; 
     color: #fffefe;
-    background-color: #000000;
+    background-color: #0000003f;
 }
 /* Crucial for fixed landing page: Hide overflow initially */
 html, body {
@@ -22,6 +22,16 @@ html, body {
 /* Optional: Smooth scrolling for when scrolling is re-enabled */
 html {
     scroll-behavior:smooth;
+}
+
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* CRITICAL: Pushes the canvas behind all other elements */
+    pointer-events: none; /* Allows mouse clicks to pass through the canvas to your content */
 }
 
 .image-modal {
@@ -121,7 +131,7 @@ header {
 
 /*---Header Styles ---*/
 header {
-    background-color: #272727; /*sets a dark grey background for header*/
+    background-color: #1b1a1a; /*sets a dark grey background for header*/
     color: white;/* changes colour of text in Header*/
     padding: 1rem;/*Adds vertical padding
     (1rem = typically 16px) to the header, no horizontal padding as the .container handles that.*/
@@ -227,7 +237,7 @@ header h1 {
 
 .hero-section
 {       
-    background-color: #0f0816;
+    background-color: #0f08162f;
     z-index: 1000;
     width:100vw;
     height: 100vh;
@@ -240,7 +250,7 @@ header h1 {
     /* Ensure the height is full screen for the gradient to cover it */
     min-height: 100vh;
     overflow: hidden; /* Crucial: Hides the gradient circles that extend past the boundaries */
-    background-color: #0A0A0A; /* Your dark background */
+    background-color: #0a0a0a00; /* Your dark background */
     /* ... other hero styles ... */
 }
 
@@ -302,6 +312,34 @@ header h1 {
     align-content: justify;
     position: relative;
     z-index:9999;
+    
+    animation: glow-blink 2s infinite alternate;
+}
+
+.circular-image-about 
+{
+    /* 1. Set fixed dimensions to ensure it's a perfect square */
+    width: 100px; 
+    height: 100px; 
+
+    /* 2. Apply 50% border-radius to make the square a circle */
+    border-radius: 50%;
+
+    /* 3. Ensure the image covers the entire circle without distortion or gaps */
+    object-fit: cover; 
+
+    /* 4. Clip any parts of the rectangular image that fall outside the circle */
+    overflow: hidden; 
+    
+    /* Optional: Add a subtle border for a professional look */
+    border: 3px solid #f0f0f0; 
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: 30px;
+    align-content: justify;
+    position: relative;
     
     animation: glow-blink 2s infinite alternate;
 }
@@ -515,9 +553,10 @@ header h1 {
 /*---about section styles---*/
 .about-section {
     padding: 80px;
-    background-color: #1a1a1a ;
+    background-color: #1a1a1a54 ;
+    
     text-align: center;
-    box-shadow: 0 2px 20px #1c1c1c;
+    
     margin-bottom: 40px;
 }
 
@@ -530,8 +569,9 @@ header h1 {
 
 .project-section {
     padding: 40px;
-    background-color: #1a1a1a ;
-    text-align: center;   
+    background-color: #1a1a1a54 ;
+    text-align: center;
+    margin-bottom: 40px;   
 }
 
 .project-section h2
@@ -573,8 +613,9 @@ header h1 {
 /*---Gallery section styles---*/
 .gallery-section {
     padding: 40px;
-    background-color: rgb(0, 0, 0);
+    background-color: #1a1a1a60 ;
     text-align: center;
+    margin-bottom:40px;
 }
 /*filter-buttons*/
 .filter-buttons {
@@ -586,7 +627,7 @@ header h1 {
     
 }
 .filter-btn {
-    background-color: #000000;
+    background-color: #00000000;
     color: #4d4d4d;
     border: none;
     padding: 10px 20px;
@@ -634,7 +675,7 @@ header h1 {
 
 /*--individual gallery item style--*/
 .gallery-item {
-    background-color: #202020;
+    background-color: #2020208b;
     border-radius:8px;
     overflow: hidden;/*Hides any content that spills outside the rounded corners,
     especially useful for images.*/
@@ -662,8 +703,10 @@ header h1 {
 }
 .gallery-item:hover {
     transform: translateY(-8px);/*adds animation*/
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    
     /*shadow increases when hovering*/
+    
+
 }
 .gallery-item h3 {
     font-size: 1.3em; /* 194 */
@@ -718,7 +761,7 @@ header h1 {
 
 /*--individual project item style--*/
 .project-item {
-    background-color: #3c3c3c;
+    background-color: #3c3c3c53;
     
     /*overflow: hidden;/*Hides any content that spills outside the rounded corners,
     especially useful for images.*/
@@ -1051,7 +1094,7 @@ header h1 {
     background-color: white;
     text-align: center;
     box-shadow:  0 0px 20px rgba(0, 0, 0, 0.293);
-    background-color: #1a1a1a ;
+    background-color: #1a1a1a54 ;
 }
 .contact-section p {
     max-width: 700px;
@@ -1064,7 +1107,7 @@ header h1 {
     max-width: 600px;
     margin: 0 auto;
     padding: 30px;
-    background-color: #696969;
+    background-color: #3c3c3c30;
     border-radius: 10px;
     box-shadow: 8px; 
     display: flex;
@@ -1078,7 +1121,7 @@ header h1 {
     font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 5px;
     display: block; 
-    color: #ffffff;
+    color: #00000000;
 }
 
 .contact-section input[type="text"],
@@ -1094,6 +1137,7 @@ header h1 {
 .contact-section input[type="text"]:focus,
 .contact-section input[type="email"]:focus,
 .contact-section textarea:focus {
+    background-color: #21212155;
     border-color: #9500ff;
     outline:none;
     box-shadow:0 0 0 5px rgba(112, 0, 225, 0.25);
@@ -1126,7 +1170,7 @@ header h1 {
 
 /*--footer style---*/
 footer {
-    background-color: #333;
+    background-color: #1b1a1a;
     color: white;
     padding: 30px; /*top/bottom padding for footer*/
     text-align: center;
@@ -1208,6 +1252,17 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         margin-right: 0; /* Ensure this is not auto or pushing it right */
     }
 
+    .contact-info p a
+    {
+        color: white;
+        text-decoration: none;
+    }
+
+    .contact-info p a:hover
+    {
+        color: #9500ff;
+    }
+
 
     .contact-section form {
         flex-basis: 400px; /* Give it a base width, it will shrink/grow from here */
@@ -1216,7 +1271,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         max-width: 50px; /* Keep max-width for large screens */
 
         padding: 30px;
-        background-color: #69696942;
+        background-color: #69696913;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Corrected box-shadow value */
         display: flex;
@@ -1230,7 +1285,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 50px; /* Keep it square */
         vertical-align: middle; /* Align icon with text */
 
-        background-color: #301d3b; /* Background for the icon */
+        background-color: #7900bf4c; /* Background for the icon */
         padding: 8px; /* Padding inside the icon's background */
         border-radius: 5px; /* Slightly rounded corners for the icon's background */
         margin-right: 15px; /* Space between icon background and text */
@@ -1245,13 +1300,15 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
         margin-bottom: 5px;
         display: block; /*Makes labels take up their own line.*/
-        color: #ffffff83;
+        color: #ffffff;
         font-size: 0.7em;
     }
 
     .contact-section input[type="text"],
     .contact-section input[type="email"],
     .contact-section textarea {
+        background-color: #21212155;
+        color: #ffffff;
         width: 100%;
         padding: 12px;
         border: 3px solid #000000;
@@ -1353,7 +1410,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         margin-left:10%;
         margin-right:10%;
         padding: 30px;
-        background-color: #69696942;
+        background-color: #6969691c;
         border-radius: 10px;
         box-shadow: 8px; /* This looks like an incomplete or incorrect box-shadow value. It should be 4 values + color. */
         display: flex;
@@ -1367,13 +1424,15 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
         margin-bottom: 5px;
         display: block; /*Makes labels take up their own line.*/
-        color: #ffffff83;
+        color: #ffffff;
         font-size: 0.7em;
     }
 
     .contact-section input[type="text"],
     .contact-section input[type="email"],
     .contact-section textarea {
+        background-color: #00000000;
+        color: #ffffff;
         width: 100%;
         padding: 12px;
         border: 3px solid #000000;
@@ -1410,7 +1469,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 8%;         
         vertical-align: middle; 
         
-        background-color: #301d3b;
+        background-color: #7900bf4c;
         padding: 8px;
         border-radius: 5px;
         margin-right: 2%;
@@ -1421,9 +1480,19 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     .contact-info p
     {
         font-size: 0.8em;
-        font-family: 'Tahoma', Verdana, Geneva, Tahoma, sans-serif;
-       
+        font-family: 'Tahoma', Verdana, Geneva, Tahoma, sans-serif;      
         
+    }
+
+    .contact-info p a
+    {
+        color: white;
+        text-decoration: none;
+    }
+
+    .contact-info p a:hover
+    {
+        color: #9500ff;
     }
 
     .contact-section button[type="submit"] {
