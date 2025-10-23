@@ -121,8 +121,7 @@ header {
 
 /*---Header Styles ---*/
 header {
-    background-color: #202020d3; /*sets a dark grey background for header*/
-    backdrop-filter: blur(2px);
+    background-color: #272727; /*sets a dark grey background for header*/
     color: white;/* changes colour of text in Header*/
     padding: 1rem;/*Adds vertical padding
     (1rem = typically 16px) to the header, no horizontal padding as the .container handles that.*/
@@ -868,7 +867,7 @@ header h1 {
     overflow: auto; /* Enable scroll if content is too long */
     background-color: rgba(0, 0, 0, 0.85); /* Darker, slightly transparent background */
     padding-top: 50px; /* Space from the top */
-    backdrop-filter: blur(2px); /* Optional: Adds a subtle blur to the background */
+    backdrop-filter: blur(5px); /* Optional: Adds a subtle blur to the background */
 }
 
 /* Modal content box (the white card) */
@@ -1214,7 +1213,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         flex-basis: 400px; /* Give it a base width, it will shrink/grow from here */
         /* flex: 1; */ /* If you use flex-basis, you might not need flex: 1 */
         min-width: 500px; /* Keep minimum width to prevent form from getting too small */
-        max-width: 650px; /* Keep max-width for large screens */
+        max-width: 50px; /* Keep max-width for large screens */
 
         padding: 30px;
         background-color: #69696942;
