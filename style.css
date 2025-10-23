@@ -167,17 +167,17 @@ header h1 {
 }
 .about-buttons nav ul {
     list-style: none; /*removes list bullets(or whatver list type is there)*/
-    margin: 0;
+    margin: auto;
     padding: 0;
     display: flex; /*Makes the list items <li> display in a row using flexbox*/
     flex-wrap: wrap;
+    justify-content: center;
     gap: 5%;
     
    
 }
 .about-buttons ul li {
-    margin-left: auto;
-    margin-right: auto;
+    
     margin-top: 10%;
    
     
@@ -186,6 +186,7 @@ header h1 {
 }
 .about-buttons ul li a {
    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.5em;
     display: flex;
     flex-wrap: wrap;
@@ -193,7 +194,8 @@ header h1 {
     text-align: center;
     color: rgb(80, 80, 80);
     text-decoration: none;
-    font-weight: bolder;
+    font-weight: bold;
+    
 
     padding: 8px 22px; /* Start with no padding */
     background-color: rgba(255, 255, 255, 0); /* Start with no background */
@@ -203,7 +205,7 @@ header h1 {
     
 
     /* IMPORTANT: Include ALL properties that change on hover in the transition */
-    transition: color 0.3s ease, background-color 0.3s ease, ;
+    transition: background-color 0.3s ease ;
 
     /* REMOVE THIS LINE: You are already handling spacing with 'gap' on 'ul' or 'margin-left' on 'li' */
     /* margin-left: 15px; */
@@ -211,7 +213,7 @@ header h1 {
 
 .about-buttons nav ul li a:hover,
 .about-buttons nav ul li a.active {
-   color: #ffffff; /* Text color changes to black */
+    color: #ffffff; /* Text color changes to black */
     background-color: #8c00ff; /* Background becomes white */
     border-radius: 20px; /* Start with no border-radius */
     border-style: solid;
@@ -423,16 +425,7 @@ header h1 {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 942px)
-{
-    #hero .container .button
-    {
-        display: flex;
-        flex-direction: column;
-        margin-left: auto;
-        
-    }
-}
+
 
 /* --- Scroll Down Indicator Styles (for Hero Section) --- */
 .scroll-down {
@@ -879,7 +872,7 @@ header h1 {
 
 /* Modal content box (the white card) */
 .modal-content-area {
-    background-color: #fefefe;
+    background-color: #fefefe12;
     margin: 5% auto; /* 5% from top and centered */
     padding: 20px;
     border-radius: 10px;
@@ -907,13 +900,13 @@ header h1 {
 
 #modal-project-title {
     font-size: 2rem;
-    color: #333;
+    color: #ededed;
     margin: 0;
 }
 
 #modal-project-subtitle {
     font-size: 1rem;
-    color: #666;
+    color: #c9c9c9;
     margin-top: 5px;
 }
 
@@ -931,7 +924,7 @@ header h1 {
 
 .close-button-rich:hover,
 .close-button-rich:focus {
-    color: #333;
+    color: #8f31e1;
     text-decoration: none;
     cursor: pointer;
 }
@@ -941,6 +934,7 @@ header h1 {
     display: flex;
     flex-direction: column; /* Stack content vertically by default */
     gap: 20px;
+    color:#c6c6c6
 }
 
 /* Media Gallery (Image/Video) */
@@ -1061,9 +1055,9 @@ header h1 {
 }
 .contact-section p {
     max-width: 700px;
-    margin: 0 auto 30px auto; /* 206 */
-    font-size: 1.3em; /* 207 */
-    line-height: 1.4; /* 208 */
+    margin: 0 auto 30px auto; 
+    font-size: 1.3em; 
+    line-height: 1.4;
 }
 
 .contact-section form {
@@ -1072,7 +1066,7 @@ header h1 {
     padding: 30px;
     background-color: #696969;
     border-radius: 10px;
-    box-shadow: 8px; /* This looks like an incomplete or incorrect box-shadow value. It should be 4 values + color. */
+    box-shadow: 8px; 
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -1083,7 +1077,7 @@ header h1 {
     font-weight: bold;
     font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 5px;
-    display: block; /*Makes labels take up their own line.*/
+    display: block; 
     color: #ffffff;
 }
 
@@ -1106,7 +1100,7 @@ header h1 {
 }
 
 .contact-section textarea {
-    resize:vertical; /*looks the text area to be only resizable veritcally*/
+    resize:vertical; 
     min-height: 120px;
 }
 .contact-section button[type="submit"] {
@@ -1121,8 +1115,8 @@ header h1 {
     transition: background-color 0.3s ease, transform 0.2s ease;
     font-family: 'Tahoma', Verdana, Geneva, Tahoma, sans-serif;
     align-self: flex-start;
-    /*Aligns the submit button to the left within the flex column.*/
-    margin-top: 7px;/*adds space above button*/
+    
+    margin-top: 7px;
 }
 
 .contact-section button[type="submit"]:hover {
@@ -1182,6 +1176,124 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         flex: 2; /* Takes up two parts of the space */
         padding-left: 20px;
     }
+    .contact-layout-wrapper {
+        display: flex;
+        justify-content: center; /* Centers the whole content block horizontally within its parent */
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 40px; /* Increased gap for better spacing between info and form */
+        margin-top: 30px;
+    }
+
+    .contact-info {
+        /* flex: 1; /* Keep if you want it to grow/shrink equally with the form */
+        /* Remove min-width/max-width here initially to see default sizing */
+        /* min-width: 300px; */ /* Consider removing these to let content define width more */
+        /* max-width: 450px; */ /* If you keep them, ensure they allow enough space */
+        
+        flex-basis: 400px; /* Give it a base width, it will shrink/grow from here */
+        text-align: left; /* Ensures text within .contact-info itself aligns left */
+        padding-left: 0; /* Ensure no default padding is pushing content */
+        margin-left: 10%; /* Ensure no default margin is pushing content */
+    }
+
+    /* Specific styling for paragraphs inside .contact-info */
+    .contact-info p {
+        font-size: 1em; /* Adjust text size as needed, 0.9em might be small */
+        line-height: 1.4;
+        margin-bottom: 10px; /* Space between each contact line */
+        text-align: left; /* Explicitly align text within each paragraph */
+        /* Remove any margin: auto or text-align: center that might be inherited or globally set */
+        margin-left: 0; /* Ensure this is not auto or pushing it right */
+        margin-right: 0; /* Ensure this is not auto or pushing it right */
+    }
+
+
+    .contact-section form {
+        flex-basis: 400px; /* Give it a base width, it will shrink/grow from here */
+        /* flex: 1; */ /* If you use flex-basis, you might not need flex: 1 */
+        min-width: 500px; /* Keep minimum width to prevent form from getting too small */
+        max-width: 650px; /* Keep max-width for large screens */
+
+        padding: 30px;
+        background-color: #69696942;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Corrected box-shadow value */
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+    .contact-icon {
+        width: 50px; /* Fixed pixel size is better for icons */
+        height: 50px; /* Keep it square */
+        vertical-align: middle; /* Align icon with text */
+
+        background-color: #301d3b; /* Background for the icon */
+        padding: 8px; /* Padding inside the icon's background */
+        border-radius: 5px; /* Slightly rounded corners for the icon's background */
+        margin-right: 15px; /* Space between icon background and text */
+        
+        /* === CRITICAL FIX: REMOVE MARGIN-LEFT === */
+        /* margin-left: 4%; */ /* This was pushing the icon right */
+        margin-bottom : 10px;
+    }
+
+    .contact-section label {
+        font-weight: bold;
+        font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
+        margin-bottom: 5px;
+        display: block; /*Makes labels take up their own line.*/
+        color: #ffffff83;
+        font-size: 0.7em;
+    }
+
+    .contact-section input[type="text"],
+    .contact-section input[type="email"],
+    .contact-section textarea {
+        width: 100%;
+        padding: 12px;
+        border: 3px solid #000000;
+        border-radius: 5px;
+        font-size: 0.8em;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-section input[type="text"]:focus,
+    .contact-section input[type="email"]:focus,
+    .contact-section textarea:focus {
+        border-color: #9500ff;
+        outline:none;
+        box-shadow:0 0 10px 7px rgba(112, 0, 225, 0.25);
+    }
+
+    .contact-section textarea {
+        resize:vertical; /*looks the text area to be only resizable veritcally*/
+        min-height: 60px;
+    }
+ 
+
+    .contact-section button[type="submit"] {
+        font-size: 0.7em;
+        background-color: #8420ff;
+        color: white;
+        padding:12px 25px;
+        border:none;
+        border-radius: 20px;
+        cursor: pointer;
+        
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: 'Tahoma', Verdana, Geneva, Tahoma, sans-serif;
+        align-self: flex-start;
+        /*Aligns the submit button to the left within the flex column.*/
+        margin-top: 7px;/*adds space above button*/
+    }
+
+    .contact-section button[type="submit"]:hover {
+        background-color: #550780;
+        transform: translateY(-2px);/*animate when hovering*/
+    }
 }
 
 /*same for hero section*/
@@ -1224,6 +1336,116 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     #details-heading
     {
         font-size: 0.8em;
+    }
+
+    .contact-section p 
+    {
+        max-width: 700px;
+        margin: 0 auto 30px auto; /* 206 */
+        font-size: 0.7em; /* 207 */
+        line-height: 1.4; /* 208 */
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    .contact-section form {
+        max-width: auto;
+        margin-left:10%;
+        margin-right:10%;
+        padding: 30px;
+        background-color: #69696942;
+        border-radius: 10px;
+        box-shadow: 8px; /* This looks like an incomplete or incorrect box-shadow value. It should be 4 values + color. */
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: left;
+    }
+
+    .contact-section label {
+        font-weight: bold;
+        font-family: 'Tahoma' Verdana, Geneva, Tahoma, sans-serif;
+        margin-bottom: 5px;
+        display: block; /*Makes labels take up their own line.*/
+        color: #ffffff83;
+        font-size: 0.7em;
+    }
+
+    .contact-section input[type="text"],
+    .contact-section input[type="email"],
+    .contact-section textarea {
+        width: 100%;
+        padding: 12px;
+        border: 3px solid #000000;
+        border-radius: 5px;
+        font-size: 0.8em;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-section input[type="text"]:focus,
+    .contact-section input[type="email"]:focus,
+    .contact-section textarea:focus {
+        border-color: #9500ff;
+        outline:none;
+        box-shadow:0 0 10px 7px rgba(112, 0, 225, 0.25);
+    }
+
+    .contact-section textarea {
+        resize:vertical; /*looks the text area to be only resizable veritcally*/
+        min-height: 60px;
+    }
+
+    .contact-info {
+    /* Set the alignment for all inline content (text, icons) to the left */
+    text-align: left;
+    
+    /* Ensure the container doesn't have conflicting centering properties */
+    /* Remove any margin: auto; if it's currently centering the whole block */
+    
+    /* If you want the entire block to move left, ensure its width is defined 
+       and it doesn't have conflicting margins from a parent container. */
+    }
+    .contact-icon 
+    {
+        width: 8%;         
+        height: 8%;         
+        vertical-align: middle; 
+        
+        background-color: #301d3b;
+        padding: 8px;
+        border-radius: 5px;
+        margin-right: 2%;
+        margin-left: 4%;
+
+    }
+
+    .contact-info p
+    {
+        font-size: 0.8em;
+        font-family: 'Tahoma', Verdana, Geneva, Tahoma, sans-serif;
+       
+        
+    }
+
+    .contact-section button[type="submit"] {
+        font-size: 0.7em;
+        background-color: #8420ff;
+        color: white;
+        padding:12px 25px;
+        border:none;
+        border-radius: 20px;
+        cursor: pointer;
+        
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: 'Tahoma', Verdana, Geneva, Tahoma, sans-serif;
+        align-self: flex-start;
+        /*Aligns the submit button to the left within the flex column.*/
+        margin-top: 7px;/*adds space above button*/
+    }
+
+    .contact-section button[type="submit"]:hover {
+        background-color: #550780;
+        transform: translateY(-2px);/*animate when hovering*/
     }
 }
 
