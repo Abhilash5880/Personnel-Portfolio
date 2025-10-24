@@ -1913,6 +1913,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
     position: absolute;
     left: 4px; /* Adjust to align with padding */
     top: 5px;
+    
     z-index: 2; /* Ensure dot is above the line */
 }
 
@@ -2124,11 +2125,8 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         padding-left: 20px;
     }
 
-    .timeline-dot {
-        left: 0;
-        width: 10px;
-        height: 10px;
-    }
+    
+    
 
     .experience-item:not(:last-child)::before {
         left: 5px;
