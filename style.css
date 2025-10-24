@@ -132,7 +132,7 @@ header {
 /*---Header Styles ---*/
 header {
     background-color: #1b1a1a; /*sets a dark grey background for header*/
-    color: white;/* changes colour of text in Header*/
+    color: rgb(255, 255, 255);/* changes colour of text in Header*/
     padding: 1rem;/*Adds vertical padding
     (1rem = typically 16px) to the header, no horizontal padding as the .container handles that.*/
     position:sticky; /*header will stay at the top after scrolling*/
@@ -553,11 +553,11 @@ header h1 {
 /*---about section styles---*/
 .about-section {
     padding: 80px;
-    background-color: #1a1a1a54 ;
+    background-color: #17002d61 ;
     
     text-align: center;
     
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 .about-section p {
@@ -569,9 +569,9 @@ header h1 {
 
 .project-section {
     padding: 40px;
-    background-color: #1a1a1a54 ;
+    background-color: #17002d61 ;
     text-align: center;
-    margin-bottom: 40px;   
+    margin-bottom:80px;   
 }
 
 .project-section h2
@@ -613,9 +613,15 @@ header h1 {
 /*---Gallery section styles---*/
 .gallery-section {
     padding: 40px;
-    background-color: #1a1a1a60 ;
+    background-color: #17002d61 ;
     text-align: center;
-    margin-bottom:40px;
+    margin-bottom:80px;
+}
+
+.gallery-section p
+{
+    margin-bottom: 40px;
+
 }
 /*filter-buttons*/
 .filter-buttons {
@@ -1357,6 +1363,13 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 /*same for hero section*/
 @media(max-width:768px) /* Added 'px' to media query */
 {
+    .gallery-section p,
+    .project-section p
+    {
+        font-size: 0.7em;
+
+    }
+    
     .hero-section h2
     {
        font-size: 2em;
@@ -1716,20 +1729,15 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
         height: 3.25px;
         border-radius: 3px;
     }
-    .about-section p,
-    .project-section p 
+    .about-section p
+    
     {
         max-width: 1200px;/*Limits the width of paragraphs for readability.*/
         margin: 0 auto 20px auto;/* Centers paragraphs and adds 15px bottom margin*/
         font-size: 0.9em;
         line-height: 1.2;
     }
-    .project-section p 
-    {
-        margin-left: 20px;
-        margin-right: 20px;
-       
-    }
+
 }
 
     .gallery-item p 
@@ -1823,9 +1831,9 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 .experience-section {
     padding: 80px 0; /* Vertical padding for the section */
     text-align: center; /* Center the section title */
-    color: #fff; /* Default text color */
-    background-color:#1a1a1a54 ; 
-    margin-bottom: 40px;
+    color: #d8d8d8; /* Default text color */
+    background-color: #17002d61 ; 
+    margin-bottom: 80px;
 }
 
 
@@ -1855,7 +1863,7 @@ footer .social-links a:hover { /* Fixed typo: footer.social-links to footer .soc
 
 .experience-column h3 {
     font-size: 2em;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     position: relative;
     padding-bottom: 10px; /* Space for the underline */
     text-align: center;
